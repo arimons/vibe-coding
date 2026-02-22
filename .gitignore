@@ -1,3 +1,4 @@
+# Jekyll 빌드 결과물
 _site/
 .sass-cache/
 .jekyll-cache/
@@ -5,3 +6,8 @@ _site/
 vendor/
 .bundle/
 Gemfile.lock
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
