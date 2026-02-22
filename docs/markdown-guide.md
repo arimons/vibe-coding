@@ -1,3 +1,9 @@
+---
+layout: page
+title: Markdown 기초 가이드
+nav_order: 5
+---
+
 # Markdown 기초 가이드 (코딩용)
 
 > 코딩하면서 꼭 필요한 Markdown 문법만 배워봅시다

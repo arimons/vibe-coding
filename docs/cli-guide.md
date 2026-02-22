@@ -1,3 +1,9 @@
+---
+layout: page
+title: CLI 기초 가이드
+nav_order: 4
+---
+
 # 🖥️ 초보자를 위한 CLI 기초 가이드
 
 ## 왜 터미널을 배워야 할까요?
