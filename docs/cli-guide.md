@@ -965,244 +965,201 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 
 ---
 
-## 🎓 실습 예제: 손으로 익히기
+## 🎓 실습 퀴즈
 
-이론만 보면 금방 잊어버려요. 실제로 따라 해보면서 몸으로 익혀봅시다!
+아래 상황을 읽고 어떤 명령어를 써야 할지 스스로 생각해보세요.  
+정답은 펼쳐서 확인할 수 있어요.
 
-### 실습 1: 복잡한 폴더 구조 만들기 (mkdir + tab + cd)
+---
 
-**목표**: Tab 자동완성의 편리함을 체감하기
+### 📍 탐색 명령어
+
+**Q1.** 터미널을 열었는데 내가 지금 어느 폴더에 있는지 모르겠다. 어떤 명령어를 쓸까?
+
+<details>
+<summary>정답 보기</summary>
 
 ```bash
-# 홈 디렉토리에서 시작
+pwd
+```
+현재 폴더의 전체 경로를 출력해줘요.
+</details>
+
+---
+
+**Q2.** 현재 폴더 안에 어떤 파일과 폴더가 있는지 보고 싶다.
+
+<details>
+<summary>정답 보기</summary>
+
+```bash
+ls
+```
+숨김 파일(.env 등)까지 보고 싶으면 `ls -a`
+</details>
+
+---
+
+**Q3.** `Desktop` 폴더 안에 `research` 폴더가 있고, 그 안에 `2024` 폴더가 있다. 한 번에 이동하려면?
+
+<details>
+<summary>정답 보기</summary>
+
+```bash
+cd Desktop/research/2024
+```
+</details>
+
+---
+
+**Q4.** 방금 들어온 폴더에서 한 단계 위로 나가고 싶다.
+
+<details>
+<summary>정답 보기</summary>
+
+```bash
+cd ..
+```
+두 단계 올라가려면 `cd ../..`
+</details>
+
+---
+
+**Q5.** 어디에 있든 상관없이 홈 폴더(`C:\Users\내이름`)로 바로 가고 싶다.
+
+<details>
+<summary>정답 보기</summary>
+
+```bash
 cd ~
+```
+</details>
 
-# 복잡한 이름의 프로젝트 폴더 생성
-mkdir "2024_Very_Long_Project_Name_For_Practice"
+---
 
-# Tab 자동완성으로 이동 (2024까지만 치고 Tab!)
+### 📍 Tab 자동완성
+
+**Q6.** `2024_Cosmetic_Stability_Test_Results`라는 폴더가 있다. 이 긴 이름을 전부 타이핑하지 않고 이동하려면 어떻게 하면 될까?
+
+<details>
+<summary>정답 보기</summary>
+
+```bash
 cd 2024[Tab]
-# → cd "2024_Very_Long_Project_Name_For_Practice"/
-
-# 하위 폴더 여러 개 만들기
-mkdir -p data/raw_data/csv_files
-mkdir -p data/processed_data
-mkdir -p src/utils
-mkdir -p tests
-
-# 구조 확인
-ls
-ls data
-ls -R data  # -R: 하위 폴더까지 모두 보기
 ```
-
-**Tab 없이 치려면?** → 손가락 아파요! 😫  
-**Tab 사용하면?** → 2024 + Tab 한 번! 😎
+`2024`까지만 치고 Tab을 누르면 자동완성돼요.  
+여러 개가 있으면 Tab을 두 번 눌러서 후보 목록을 확인하세요.
+</details>
 
 ---
 
-### 실습 2: Wildcard로 여러 파일 한 번에 다루기
+**Q7.** `python mai`까지 치다가 Tab을 눌렀는데 아무 반응이 없다. 왜일까?
 
-**목표**: `*`와 `?`의 강력함 이해하기
+<details>
+<summary>정답 보기</summary>
+
+`main.py`라는 파일이 현재 폴더에 없거나, `mai`로 시작하는 파일이 여러 개 있을 수 있어요.  
+`ls`로 현재 폴더에 어떤 파일이 있는지 먼저 확인해보세요.
+</details>
+
+---
+
+### 📍 와일드카드
+
+**Q8.** 현재 폴더에 파일이 많은데 `.csv` 파일만 보고 싶다.
+
+<details>
+<summary>정답 보기</summary>
 
 ```bash
-# 연습용 파일 여러 개 만들기
-cd ~/2024[Tab]/data/raw_data/csv_files
-
-# 빈 파일 생성
-echo "sample" > sales_2024_01.csv
-echo "sample" > sales_2024_02.csv
-echo "sample" > sales_2024_03.csv
-echo "sample" > sales_2023_12.csv
-echo "sample" > report_2024_Q1.txt
-echo "sample" > report_2024_Q2.txt
-
-# 1. 모든 파일 보기
-ls
-
-# 2. csv 파일만 보기
 ls *.csv
+```
+`*`는 "아무 문자나"를 의미해요. `*.csv`는 "`.csv`로 끝나는 모든 파일"이에요.
+</details>
 
-# 3. 2024년 파일만 보기
-ls *2024*
+---
 
-# 4. sales로 시작하는 파일만
-ls sales*
+**Q9.** `sample_A_week1.csv`, `sample_A_week2.csv`, `sample_B_week1.csv` 등 여러 파일 중 `sample_A`로 시작하는 파일만 `backup` 폴더로 복사하고 싶다.
 
-# 5. 숫자 두 개로 끝나는 csv 파일 (sales_2024_??.csv)
-ls sales_2024_??.csv
+<details>
+<summary>정답 보기</summary>
 
-# 6. 2024년 csv를 backup 폴더로 복사
+```bash
 mkdir backup
-cp *2024*.csv backup/
-
-# 7. 확인
-ls backup/
-
-# 8. txt 파일만 삭제 (조심!)
-rm *.txt
-ls  # txt 파일 사라짐 확인
+cp sample_A* backup/
 ```
+</details>
 
 ---
 
-### 실습 3: 플래그 조합 연습
+### 📍 가상환경
 
-**목표**: `-r`, `-f`, `-v` 같은 플래그 익히기
+**Q10.** `my_project`라는 새 프로젝트 폴더를 만들고, 그 안으로 이동한 뒤 가상환경을 생성하려면?
 
-```bash
-# 테스트 폴더로 이동
-cd ~/2024[Tab]/tests
-
-# 파일과 폴더 만들기
-mkdir test_suite
-echo "test code" > test_main.py
-echo "test code" > test_utils.py
-
-# 1. 자세한 정보로 보기
-ls -l
-
-# 2. 사람이 읽기 쉬운 파일 크기 + 자세히
-ls -lh
-
-# 3. 폴더 복사 (재귀적)
-cp -r test_suite test_suite_backup
-
-# 4. 복사 과정 보면서 (-v)
-cp -rv test_suite test_suite_backup2
-
-# 5. 삭제할 때 확인받기 (-i)
-rm -i test_main.py
-# → "test_main.py를 삭제하시겠습니까?" 물어봄
-# y 입력하면 삭제, n 입력하면 취소
-
-# 6. 폴더 삭제 (재귀 + verbose)
-rm -rv test_suite_backup2
-# 삭제되는 파일들이 하나씩 출력됨
-```
-
----
-
-### 실습 4: 리다이렉션과 파이프 실전
-
-**목표**: `>`, `>>`, `|`를 실제로 사용해보기
+<details>
+<summary>정답 보기</summary>
 
 ```bash
-cd ~/2024[Tab]
-
-# 1. 프로젝트 파일 목록 저장
-ls -R > project_structure.txt
-cat project_structure.txt
-
-# 2. 날짜 정보 추가
-echo "--- Created on ---" >> project_structure.txt
-date >> project_structure.txt
-cat project_structure.txt
-
-# 3. Python 파일만 찾아서 파일로 저장
-ls -R | grep ".py" > python_files.txt
-cat python_files.txt
-
-# 4. 파일 개수 세기
-ls -R | grep ".py" | wc -l
-# wc -l: 줄 개수를 세는 명령어
-
-# 5. 로그 파일 만들기
-echo "=== Project Log ===" > project_log.txt
-echo "Started: $(date)" >> project_log.txt
-echo "Files created:" >> project_log.txt
-ls >> project_log.txt
-cat project_log.txt
-```
-
----
-
-### 실습 5: 가상환경 전체 프로세스
-
-**목표**: 처음부터 끝까지 실전처럼 해보기
-
-```bash
-# 1. 새 프로젝트 폴더
-cd ~
-mkdir hello_api
-cd hello_api
-
-# 2. 가상환경 생성
+mkdir my_project
+cd my_project
 python -m venv .venv
-
-# 3. 활성화
-.\.venv\Scripts\activate
-# (.venv) 표시 확인!
-
-# 4. 패키지 설치
-pip install requests
-
-# 5. 확인
-where python
-pip list
-
-# 6. 간단한 스크립트 작성
-cat << EOF > test_api.py
-import requests
-
-response = requests.get('https://api.github.com')
-print(f"Status: {response.status_code}")
-print(f"GitHub API working!")
-EOF
-
-# 7. 실행
-python test_api.py
-
-# 8. requirements.txt 생성
-pip freeze > requirements.txt
-cat requirements.txt
-
-# 9. .gitignore 생성
-cat << EOF > .gitignore
-.venv/
-__pycache__/
-*.pyc
-.env
-EOF
-
-# 10. 정리 - 비활성화
-deactivate
 ```
+</details>
 
 ---
 
-### 💪 도전 과제
+**Q11.** 가상환경을 생성했는데 활성화를 어떻게 하는지 모르겠다. 활성화 명령어는? 성공했는지 어떻게 확인할까?
 
-이제 스스로 해볼까요?
+<details>
+<summary>정답 보기</summary>
 
-**과제 1**: `practice_cli`라는 폴더를 만들고:
-- `images` 폴더 안에 `photo_001.jpg`, `photo_002.jpg`, `photo_003.jpg` 빈 파일 생성
-- `*.jpg` 와일드카드로 모두 `backup` 폴더에 복사
-- `ls backup/` 로 확인
-
-**과제 2**: 현재 폴더의 모든 `.py` 파일을 찾아서 `python_list.txt`에 저장하기
-- 힌트: `ls`와 `>`를 사용
-
-**과제 3**: 가상환경을 만들고 `pandas`를 설치한 뒤, requirements.txt 생성하기
+```bash
+.\.venv\Scripts\activate
+```
+성공하면 프롬프트 맨 앞에 `(.venv)`가 붙어요.
+```
+(.venv) C:\Users\...\my_project>
+```
+</details>
 
 ---
 
-### 🐛 실습 중 자주 하는 실수
+**Q12.** 가상환경이 활성화된 상태에서 `pandas`와 `requests`를 설치하고, 설치된 패키지 목록을 `requirements.txt`로 저장하려면?
+
+<details>
+<summary>정답 보기</summary>
+
+```bash
+pip install pandas requests
+pip freeze > requirements.txt
+```
+</details>
+
+---
+
+**Q13.** 동료한테 받은 프로젝트에 `requirements.txt`가 있다. 필요한 패키지를 한 번에 설치하려면?
+
+<details>
+<summary>정답 보기</summary>
+
+```bash
+pip install -r requirements.txt
+```
+</details>
+
+---
+
+### 🐛 자주 하는 실수
 
 ```bash
 # ❌ 잘못된 예
-cd practice cli        # 공백 처리 안 함
-rm -rf *               # 현재 폴더 전체 삭제 (위험!)
-pip install pandas     # 가상환경 활성화 안 함
+cd practice cli        # 공백 있는 폴더명 처리 안 함
+pip install pandas     # 가상환경 활성화 안 한 상태
 
 # ✅ 올바른 예
 cd "practice cli"      # 따옴표 사용
-rm -rf practice_folder # 구체적인 폴더명 지정
-.\.venv\Scripts\activate
-pip install pandas     # 가상환경에서 설치
+.\.venv\Scripts\activate  # 먼저 활성화!
+pip install pandas
 ```
 
-**실습 팁**:
-- 실수해도 괜찮아요! 연습용 폴더는 언제든 지우고 다시 만들 수 있어요
-- `pwd`로 현재 위치를 자주 확인하세요
-- 중요한 폴더에서 `rm -rf`는 절대 쓰지 마세요!
+> 💡 막히면 `pwd`로 현재 위치부터 확인하세요. 대부분의 문제는 "엉뚱한 폴더에 있어서" 생겨요.
