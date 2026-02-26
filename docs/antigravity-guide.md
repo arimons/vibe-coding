@@ -26,7 +26,7 @@ nav_order: 6
 **1세대 — 텍스트 에디터 (메모장, Notepad++)**  
 코드를 그냥 글자로 입력하는 수준. 문법 오류가 있어도 알려주지 않습니다.
 
-1. **메모장에서는 이렇게 보입니다 — 그냥 텍스트**
+① **메모장에서는 이렇게 보입니다 — 그냥 텍스트**
 
 ```
 def add(a, b)
@@ -42,13 +42,13 @@ print(add(1, 2)
 **2세대 — IDE (VS Code, IntelliJ, PyCharm)**  
 문법 오류를 실시간으로 잡아주고, 자동완성, 디버거, 터미널이 통합된 환경입니다. 지금도 대부분의 개발자가 사용합니다.
 
-2. **IDE에서는 같은 코드가 이렇게 보입니다 — 실행 전에 오류를 표시**
+② **IDE에서는 같은 코드가 이렇게 보입니다 — 실행 전에 오류를 표시**
 
 ```python
--def add(a, b)      # ← SyntaxError: ':' 누락
+def add(a, b)      # ← SyntaxError: ':' 누락
      return a + b
 
--print(add(1, 2)    # ← SyntaxError: ')' 누락
+print(add(1, 2)    # ← SyntaxError: ')' 누락
 ```
 
 실제 IDE 화면에서는:
