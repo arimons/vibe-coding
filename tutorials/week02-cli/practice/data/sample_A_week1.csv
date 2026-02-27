@@ -1,6 +1,0 @@
-sample_id,product_name,viscosity_cps,pH,color_L,color_a,color_b,temperature_C,evaluator
-A001,Moisture Cream Alpha,45200,6.8,92.3,1.2,-3.4,25,김연구
-A002,Moisture Cream Alpha,45350,6.9,92.1,1.3,-3.5,25,김연구
-A003,Moisture Cream Alpha,44980,6.7,92.5,1.1,-3.3,25,이연구
-A004,Moisture Cream Alpha,45100,6.8,92.2,1.2,-3.4,25,이연구
-A005,Moisture Cream Alpha,45420,6.9,92.4,1.3,-3.6,25,박연구

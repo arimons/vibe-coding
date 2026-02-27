@@ -1,6 +1,0 @@
-sample_id,product_name,viscosity_cps,pH,color_L,color_a,color_b,temperature_C,evaluator
-B001,Serum Beta,3190,5.8,88.4,2.3,-1.0,25,김연구
-B002,Serum Beta,3150,5.9,88.2,2.4,-0.9,25,김연구
-B003,Serum Beta,3080,5.7,88.6,2.2,-1.1,25,이연구
-B004,Serum Beta,3120,5.8,88.3,2.3,-1.0,25,이연구
-B005,Serum Beta,3200,5.9,88.5,2.4,-0.8,25,박연구

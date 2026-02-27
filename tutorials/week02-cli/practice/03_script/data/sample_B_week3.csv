@@ -1,0 +1,4 @@
+sample_id,week,pH,viscosity,color_delta
+B001,3,6.9,3910,0.14
+B002,3,6.8,3890,0.15
+B003,3,7.0,3930,0.13

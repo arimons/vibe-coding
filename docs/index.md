@@ -75,7 +75,7 @@ nav_order: 1
 
 ### **Week 2: CLI 기초 + 실습**
 
-📖 참고 자료: [CLI 기초 가이드](cli-guide) · [Week 2 실습](week01-practice)
+📖 참고 자료: [CLI 기초 가이드](cli-guide) · [Week 2 실습](week02-practice)
 
 #### 주제
 - CLI가 필요한 이유: Prototype을 직접 실행하려면
