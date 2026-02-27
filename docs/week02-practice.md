@@ -6,7 +6,7 @@ nav_order: 10
 
 # Week 2 실습 - CLI 기초
 
-📖 개념 먼저 읽고 오셨나요? → [CLI 기초 가이드](../cli-guide)
+📖 개념 먼저 읽고 오셨나요? → [CLI 기초 가이드](https://arimons.github.io/vibe-coding/cli-guide/)
 
 ---
 

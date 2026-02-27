@@ -969,4 +969,4 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 
 개념을 읽었다면 이제 직접 해볼 차례예요.
 
-👉 **[Week 2 실습 퀴즈 & 미션](../week02-practice)**
+👉 **[Week 2 실습 퀴즈 & 미션](https://arimons.github.io/vibe-coding/week02-practice/)**

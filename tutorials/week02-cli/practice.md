@@ -1,7 +1,7 @@
 # Week 2 실습 - CLI 기초
 
-> 개념 먼저 읽고 왔나요? → [CLI 기초 가이드](https://vibe-coding.github.io/docs/cli-guide)  
-> 퀴즈로 복습하고 싶다면 → [Week 2 실습 퀴즈](https://vibe-coding.github.io/docs/week02-practice)
+> 개념 먼저 읽고 왔나요? → [CLI 기초 가이드](https://arimons.github.io/vibe-coding/cli-guide/)  
+> 퀴즈로 복습하고 싶다면 → [Week 2 실습 퀴즈](https://arimons.github.io/vibe-coding/week02-practice/)
 
 ---
 
