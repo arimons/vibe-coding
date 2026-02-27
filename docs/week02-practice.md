@@ -6,7 +6,7 @@ nav_order: 10
 
 # Week 2 실습 - CLI 기초
 
-📖 개념 먼저 읽고 오셨나요? → [CLI 기초 가이드](cli-guide)
+📖 개념 먼저 읽고 오셨나요? → [CLI 기초 가이드](../cli-guide)
 
 ---
 
@@ -15,7 +15,7 @@ nav_order: 10
 PowerShell을 열고 실습 폴더로 이동하세요:
 
 ```powershell
-cd C:\Users\amore\dev\vibe-coding\tutorials\week01-cli\practice\data
+cd C:\Users\amore\dev\vibe-coding\tutorials\week02-cli\practice\01_backup\data
 ```
 
 현재 위치 확인:

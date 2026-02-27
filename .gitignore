@@ -11,3 +11,13 @@ Gemfile.lock
 .DS_Store
 .AppleDouble
 .LSOverride
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+bin/
+include/
+lib/
+share/
+pyvenv.cfg
