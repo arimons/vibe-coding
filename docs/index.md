@@ -31,7 +31,8 @@ nav_order: 1
 12주 (주 1회, 2시간)
 
 ### **구조**
-- 1-2주: 환경 설정 + CLI 기초
+- 1주: 쇼케이스 (AI 도구로 무엇이 가능한지 체험)
+- 2주: 개발 환경 + CLI 기초
 - 3-7주: 데이터 실습 (Streamlit / Excel / PDF / Crawling / LLM API)
 - 8주: 프로젝트 기획 + 기술스택 이해
 - 9-12주: 개인 프로젝트 개발
@@ -45,48 +46,54 @@ nav_order: 1
 
 ## 📅 주차별 커리큘럼
 
-### **Week 1: 개발 환경 이해 + 첫 Prototype**
+### **Week 1: 쇼케이스 — AI로 무엇이 가능한가**
 
-📖 참고 자료: [Antigravity 가이드](antigravity-guide) · [Git 초보자 가이드](git-guide) · [용어 사전](glossary)
+📖 참고 자료: [Antigravity 가이드](antigravity-guide)
 
-#### 주제
-- IDE란 무엇인가: 메모장 → IDE → VS Code 계열의 흐름
-- 3대 개발 도구 비교: VS Code / Cursor / Antigravity
-- Git은 왜 쓰는가: 저장 + 되돌리기 + 협업 (개념만, 실습은 AI가 대신)
-- Antigravity 설치 및 설정 (setup.bat 실행)
+> 이번 주 목표: "이 수준까지 된다"는 것을 눈으로 확인한다. 실습보다 임팩트 중심.
 
-#### 시연 (40분)
-1. VS Code → Cursor → Antigravity로 이어지는 흐름 설명
-2. Git의 필요성: 코드가 망가졌을 때 되돌리는 시연 (개념 이해 위주)
-3. Antigravity에서 첫 대화로 간단한 도구 만들기
-4. PRD 자동 생성 과정 확인
+#### 사전 준비 (수강생 숙제)
+- Python 설치
+- Antigravity 설치 + 로그인
 
-#### 실습 (40분)
-- setup.bat 실행으로 환경 구성
-- Antigravity 로그인 + Rules/Skills 설정 확인
-- **Stitch**로 내가 만들고 싶은 앱 UI 스케치 (10분): 입력창/버튼/출력 화면 구성
-- Antigravity에서 첫 대화로 간단한 도구 만들기
-- 잘 된 것 / 막힌 것 공유
+#### 강의 흐름
+
+**1. IDE 발전사 소개 (20분)**
+- 메모장 → IDE → VS Code 계열의 흐름
+- VS Code / Cursor / Antigravity 비교
+- "AI가 코드를 대신 짜주는 시대"로 이어지는 맥락 설명
+
+**2. Stitch로 UI 스케치 (20분)** ← 유일한 수강생 직접 체험
+- 내가 만들고 싶은 앱의 입력창/버튼/출력 화면 스케치
+- 결과 이미지 저장 (다음 단계에서 활용)
+
+**3. MVP 시연 (40분)** ← 강사 시연
+- 미리 준비한 boilerplate 불러오기
+- Stitch 이미지 + boilerplate → Antigravity로 MVP 구현 과정 시연
+- Antigravity Rules/Skills 설정 간단 안내
+- "여기까지 오늘 보여드린 겁니다" 마무리
 
 #### 과제
 용어 사전 읽고 모르는 단어 별표 표시 (다음 주 Q&A)
 
 ---
 
-### **Week 2: CLI 기초 + 실습**
+### **Week 2: 개발 환경 이해 + CLI 기초**
 
-📖 참고 자료: [CLI 기초 가이드](cli-guide) · [Week 2 실습](week02-practice)
+📖 참고 자료: [용어 사전](glossary) · [Git 초보자 가이드](git-guide) · [CLI 기초 가이드](cli-guide) · [Week 2 실습](week02-practice)
 
 #### 주제
-- CLI가 필요한 이유: Prototype을 직접 실행하려면
+- 용어 사전 Q&A: Week 1 숙제 리뷰 (모르는 단어 함께 정리)
+- Git은 왜 쓰는가: 저장 + 되돌리기 + 협업 (개념만)
+- CLI가 필요한 이유: 프로그램을 직접 실행하려면
 - 필수 명령어: `pwd`, `cd`, `ls`, `mkdir`, `cp`, `mv`
 - 와일드카드와 Tab 자동완성
 - 가상환경 개념 (설명만, 실습은 Week 3 이후)
 
 #### 시연 (30분)
-1. Week 1에서 만든 Prototype — 실제로 어떻게 실행되는가
+1. Week 1 MVP — 실제로 어떻게 실행되는가 (터미널 기준)
 2. 터미널로 폴더 이동 → 파일 확인 → 스크립트 실행 흐름
-3. AI가 만든 .bat 스크립트 실행 시연
+3. AI가 만든 스크립트 실행 시연
 
 #### 실습 (50분)
 - 실습 파일로 퀴즈 미션 수행 (backup 폴더 만들기, 파일 복사/이름 변경)
@@ -98,25 +105,32 @@ nav_order: 1
 
 ---
 
-### **Week 3: CLI → Streamlit (GUI의 편함)**
+### **Week 3: CLI 스크립트 → Streamlit GUI화**
+
+📖 참고 자료: [Streamlit 가이드](streamlit)
+
+> 핵심 철학: Streamlit 문법을 배우는 게 아니라, AI한테 시켜서 GUI를 뚝딱 만드는 경험
 
 #### 주제
-- CLI의 불편함 vs Streamlit의 편함
-- Streamlit 기본 구조 (`st.file_uploader`, `st.button`, `st.write`)
-- 가상환경 실습: 생성 → 활성화 → 패키지 설치
+- CLI의 불편함 vs GUI의 편함: 같은 기능, 다른 경험
+- 가상환경 실습: 생성 → 활성화 → 패키지 설치 (`streamlit`, `pandas`)
+- Streamlit 실행 한 줄: `streamlit run app.py`
+- AI 프롬프트 패턴: "이 스크립트를 Streamlit으로 바꿔줘"
 
 #### 시연 (30분)
 1. Week 2 파일 정리 스크립트 — CLI 버전 vs Streamlit 버전 비교
-2. AI에게 "이걸 Streamlit으로 만들어줘" 요청 흐름
-3. `streamlit run app.py` 실행 시연
+2. **파일 Renamer**: 규칙 입력 → 미리보기 → 일괄 변경
+3. **파일 정리기**: 확장자별 자동 분류 → 폴더 이동
+4. **스크립트 실행기**: 버튼 클릭 → 터미널 없이 스크립트 대리 실행
 
 #### 실습 (50분)
-- Week 1에서 Stitch로 개초린 UI를 Streamlit으로 구현
-- 파일 업로드 + 버튼 + 결과 출력 기본 템플릿 완성
+- 가상환경 생성 + streamlit 설치
+- AI에게 파일 Renamer 요청 → 실행 → 결과 확인
+- 본인 폴더 경로로 바꿔서 실제 동작 확인
 - 코드 보지 않고 결과만 확인하는 흐름 연습
 
 #### 과제
-본인 스크립트 1개를 Streamlit으로 변환해보기
+본인이 반복하는 파일 작업 1개를 Streamlit 앱으로 만들어보기
 
 ---
 
@@ -239,7 +253,8 @@ PDF 요약 또는 키워드 추출 Streamlit 앱 1개 스스로 완성
 
 | 구간 | 주제 | 시연 | 실습 | 질문 |
 |------|------|------|------|------|
-| Week 1-6 | 30분 | 40분 | 40분 | 10분 |
+| Week 1 | 20분 | 40분 | 20분 | 10분 |
+| Week 2-6 | 30분 | 30분 | 50분 | 10분 |
 | Week 7-8 | 20분 | 30분 | 60분 | 10분 |
 | Week 9-12 | 공유 20분 | — | 멘토링 80분 | 20분 |
 
@@ -249,7 +264,8 @@ PDF 요약 또는 키워드 추출 Streamlit 앱 1개 스스로 완성
 
 | 구간 | 목표 |
 |------|------|
-| Week 1-2 | 개발 환경 이해, AI 도구 활용 시작, 터미널 기초 익히기 |
+| Week 1 | AI 도구로 가능한 수준 체감 (쇼케이스) |
+| Week 2 | 개발 환경 이해, 용어 정리, 터미널 기초 익히기 |
 | Week 3-4 | pandas 가능성 이해, 크롤링 개념, selector 숙달 |
 | Week 5-6 | Streamlit 웹앱 제작, 실용적 도구 완성 |
 | Week 7-8 | 프로젝트 기획 능력, Frontend 개념, 도구 선택 판단 |
