@@ -63,7 +63,7 @@ nav_order: 10
 
 ---
 
-**Q5.** 어디에 있든 홈 폴더(`C:\Users\amore`)로 바로 가고 싶다.
+**Q5.** 어디에 있든 홈 폴더(`C:\Users\사용자이름`)로 바로 가고 싶다.
 
 <details>
 <summary>정답 보기</summary>
@@ -115,7 +115,7 @@ cp sample_A* backup\</code></pre>
 **실습 폴더로 이동하세요:**
 
 ```powershell
-cd C:\Users\amore\dev\vibe-coding\tutorials\week02-cli\practice\01_backup\data
+cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\01_backup\data
 ```
 
 **초기 상태**
@@ -169,7 +169,7 @@ cd C:\Users\amore\dev\vibe-coding\tutorials\week02-cli\practice\01_backup\data
 **실습 폴더로 이동하세요:**
 
 ```powershell
-cd C:\Users\amore\dev\vibe-coding\tutorials\week02-cli\practice\02_organize\data
+cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\02_organize\data
 ```
 
 **초기 상태**
@@ -227,7 +227,7 @@ cd C:\Users\amore\dev\vibe-coding\tutorials\week02-cli\practice\02_organize\data
 **실습 폴더로 이동하세요:**
 
 ```powershell
-cd C:\Users\amore\dev\vibe-coding\tutorials\week02-cli\practice\03_script\data
+cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\03_script\data
 ```
 
 **초기 상태**
@@ -300,3 +300,196 @@ cat sample_B_merged.csv
 ├── sample_C_merged.csv
 └── merge.ps1
 ```
+
+---
+
+## 🎯 미션 4 — 로그 파일 탐색과 필터링
+
+**실습 폴더로 이동하세요:**
+
+```powershell
+cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\04_log_analysis
+```
+
+**초기 상태**
+```
+04_log_analysis/
+├── server_log_01.log
+├── server_log_02.log
+├── ...
+└── server_log_20.log
+```
+
+> 서버 로그 파일이 20개 쌓여 있습니다.  
+> 운영팀에서 "지난 며칠간 WARN, ERROR 로그가 몇 건인지, 어떤 메시지가 가장 많이 나왔는지" 를 정리해달라는 요청을 받았습니다.  
+> 파일을 하나씩 열어서 눈으로 세는 대신, CLI로 한 번에 처리해보세요.
+
+---
+
+**Step 1.** 파일이 몇 개인지 확인하세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">dir *.log</code></pre>
+
+</details>
+
+**Step 2.** `server_log_01.log` 파일 내용을 확인하세요. 어떤 형식인지 파악하세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">cat server_log_01.log</code></pre>
+
+</details>
+
+**Step 3.** 모든 로그 파일에서 `WARN`이 포함된 줄만 골라내세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">Select-String -Path *.log -Pattern "WARN"</code></pre>
+<p>Mac/Linux라면: <code>grep "WARN" *.log</code></p>
+
+</details>
+
+**Step 4.** WARN 로그만 골라내서 `warn_summary.txt` 파일로 저장하세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">Select-String -Path *.log -Pattern "WARN" > warn_summary.txt
+cat warn_summary.txt</code></pre>
+
+</details>
+
+**Step 5.** WARN 로그가 총 몇 줄인지 세어보세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">Select-String -Path *.log -Pattern "WARN" | Measure-Object -Line</code></pre>
+
+</details>
+
+**Step 6.** AI에게 스크립트를 요청해서 레벨별(INFO / WARN / DEBUG) 건수를 한 번에 집계해보세요.
+
+```
+PowerShell 스크립트를 짜줘.
+
+현재 폴더에 server_log_01.log ~ server_log_20.log 파일이 있어.
+각 파일을 읽어서 로그 레벨(INFO, WARN, DEBUG)별 총 건수를 집계하고
+결과를 log_summary.txt로 저장해줘.
+```
+
+**목표 상태**
+```
+04_log_analysis/
+├── server_log_01.log ~ server_log_20.log  ← 원본 유지
+├── warn_summary.txt   ← WARN 로그만 모은 파일
+└── log_summary.txt    ← 레벨별 집계 결과
+```
+
+---
+
+## 🎯 미션 5 — 이미지 워터마크 일괄 처리
+
+**실습 폴더로 이동하세요:**
+
+```powershell
+cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\05_image_processing
+```
+
+**초기 상태**
+```
+05_image_processing/
+├── test_image_1.jpg ~ test_image_10.jpg  ← 원본 이미지 10개
+├── apply_watermark.py                    ← 워터마크 스크립트
+└── apply_batch.sh                        ← 배치 실행 스크립트
+```
+
+> 보고서에 쓸 이미지 10개에 "Confidential" 워터마크를 찍어야 합니다.  
+> 포토샵으로 하나씩 열어서 처리하는 대신, 스크립트로 한 번에 처리해보세요.
+
+---
+
+**Step 1.** 폴더 안의 파일 목록을 확인하세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">dir</code></pre>
+
+</details>
+
+**Step 2.** 가상환경을 활성화하세요. (이미 패키지가 설치되어 있습니다)
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">.venv\Scripts\activate</code></pre>
+<p>프롬프트 앞에 <code>(.venv)</code>가 붙으면 성공입니다.</p>
+
+</details>
+
+**Step 3.** 이미지 1개에만 먼저 워터마크를 적용해보세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">python apply_watermark.py test_image_1.jpg</code></pre>
+<p>성공하면 <code>watermarked_test_image_1.jpg</code> 파일이 생깁니다.</p>
+
+</details>
+
+**Step 4.** `watermarked_test_image_1.jpg`가 생성됐는지 확인하고, 탐색기에서 열어서 워터마크가 찍혔는지 확인하세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">dir watermarked_*
+# 탐색기로 열기
+ii watermarked_test_image_1.jpg</code></pre>
+
+</details>
+
+**Step 5.** 나머지 9개를 포함해 전체 이미지를 한 번에 처리하세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">python apply_watermark.py all</code></pre>
+
+</details>
+
+**Step 6.** 워터마크가 찍힌 파일이 10개 생성됐는지 확인하세요.
+
+<details>
+<summary>힌트</summary>
+
+<pre><code class="language-powershell">dir watermarked_*</code></pre>
+<p>10개가 보이면 성공입니다.</p>
+
+</details>
+
+**목표 상태**
+```
+05_image_processing/
+├── test_image_1.jpg ~ test_image_10.jpg         ← 원본 유지
+├── watermarked_test_image_1.jpg ~ _10.jpg       ← 워터마크 결과물
+├── apply_watermark.py
+└── apply_batch.sh
+```
+
+> 💡 **CLI vs 포토샵**  
+> 이미지 100개라면? 명령어 한 줄이면 됩니다.  
+> 이게 CLI의 진짜 힘이에요.
+
+---
+
+## 🔗 다음 단계
+
+미션 5의 워터마크 처리를 **브라우저에서 드래그앤드롭으로** 할 수 있다면 어떨까요?  
+Week 3에서 이 스크립트를 Streamlit GUI로 감싸는 실습을 합니다.  
+→ [Week 3 실습](https://arimons.github.io/vibe-coding/week03-gui/)

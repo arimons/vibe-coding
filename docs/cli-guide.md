@@ -17,13 +17,13 @@ nav_order: 4
 ### 프롬프트(Prompt) 읽기
 터미널을 열면 이런 게 보입니다:
 ```
-C:\Users\amore\Desktop>
+C:\Developer\vibe-coding>
 ```
 
 이건 "지금 여기 있어요"라고 컴퓨터가 알려주는 거예요. 마치 "현재 바탕화면 폴더에 있습니다"라고 말하는 것과 같죠.
 
 ### 경로(Path)의 개념
-- **절대경로**: 집 주소처럼 완전한 경로 → `C:\Users\amore\Desktop\my_project`
+- **절대경로**: 집 주소처럼 완전한 경로 → `C:\Developer\vibe-coding\my_project`
 - **상대경로**: "여기서 두 칸 앞"처럼 현재 위치 기준 → `./my_project` 또는 `../Desktop`
 
 `.`은 "현재 위치", `..`은 "한 단계 위 폴더"를 의미합니다.
@@ -38,7 +38,7 @@ C:\Users\amore\Desktop>
 
 ```bash
 pwd
-# 출력 예: C:\Users\amore\Desktop\vibe_coding
+# 출력 예: C:\Developer\vibe-coding
 ```
 
 길을 잃었을 때 GPS로 현재 위치 확인하는 것처럼, 지금 터미널이 어느 폴더를 바라보고 있는지 알려줍니다.
@@ -108,7 +108,7 @@ cd ../..
 # 두 단계 위로
 
 cd ~
-# 홈 폴더로 (C:\Users\amore)
+# 홈 폴더로 (C:\Users\사용자이름)
 
 cd "Program Files"
 # 공백이 있는 폴더명은 따옴표 필수!
@@ -589,10 +589,10 @@ source .venv/bin/activate
 1. **프롬프트가 바뀝니다**:
    ```bash
    # 활성화 전
-   C:\Users\amore\weather_app>
+   C:\Developer\weather_app>
    
    # 활성화 후
-   (.venv) C:\Users\amore\weather_app>
+   (.venv) C:\Developer\weather_app>
    ```
    앞에 `(.venv)` 표시가 붙으면 성공!
 
@@ -600,7 +600,7 @@ source .venv/bin/activate
    ```bash
    # 확인해보기
    where python
-   # 출력: C:\Users\amore\weather_app\.venv\Scripts\python.exe
+   # 출력: C:\Developer\weather_app\.venv\Scripts\python.exe
    ```
 
 3. **pip install하면 가상환경 안에만 설치됩니다**:
@@ -676,7 +676,7 @@ python -m venv .venv
 
 # 4. 가상환경이 제대로 활성화됐는지 확인
 where python
-# C:\Users\amore\weather_chatbot\.venv\Scripts\python.exe
+# C:\Developer\weather_chatbot\.venv\Scripts\python.exe
 # ↑ .venv 경로가 나오면 성공!
 
 # 5. 필요한 라이브러리 설치
@@ -875,7 +875,7 @@ where python
 
 # 가상환경 활성화 후
 where python
-# C:\Users\amore\weather_app\.venv\Scripts\python.exe
+# C:\Developer\weather_app\.venv\Scripts\python.exe
 ```
 
 경로가 `.venv` 안이면 제대로 된 거예요!

@@ -2,17 +2,18 @@
 name: context7-usage
 description: Use when writing code that involves any external library, API integration, LLM model selection, or version-sensitive implementation
 ---
-
 # Context7 사용 규칙
-
 ## 반드시 조회 (Context7 필수)
-
 ### LLM / AI API 관련 — 최우선 적용
 - Gemini, OpenAI, Claude, Anthropic 등 LLM API 코드 작성 시
 - 모델명을 코드에 명시할 때 (예: `model="..."`)
 - LLM 클라이언트 초기화 시 (예: `genai.GenerativeModel`, `openai.Client`)
 - 임베딩, 멀티모달, 파일 업로드 등 API 기능 사용 시
 - → **모델명·클래스명·메서드명은 학습 데이터 기준으로 틀릴 수 있음. 반드시 최신 문서 확인**
+
+### ❗ 검색(Query) 작성 원칙 (매우 중요)
+1. **선입견 배제**: Context7에 `query`를 던질 때, 당신의 과거 학습 데이터에 있는 특정 버전이나 모델명(예: "Gemini 2.0")을 검색어에 미리 포함하지 마세요.
+2. **최신 정보 탐색**: "What is the latest model and how to use it?" 처럼 중립적이고 범용적인 질문을 던져서, Context7이 문서 기반으로 실제 최신 모델과 버전을 알려주도록 유도하세요.
 
 ### 외부 라이브러리 일반
 - 이 프로젝트에서 해당 라이브러리를 처음 사용할 때
