@@ -18,6 +18,7 @@ nav_order: 10
 
 **Q1.** 터미널을 열었는데 내가 지금 어느 폴더에 있는지 모르겠다.
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -26,11 +27,13 @@ nav_order: 10
 <p>현재 폴더의 전체 경로를 출력해줘요.</p>
 
 </details>
+{:/nomarkdown}
 
 ---
 
 **Q2.** 현재 폴더 안에 어떤 파일과 폴더가 있는지 보고 싶다.
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -39,11 +42,13 @@ nav_order: 10
 <p><code>dir</code>과 <code>ls</code> 둘 다 PowerShell에서 동작해요.</p>
 
 </details>
+{:/nomarkdown}
 
 ---
 
 **Q3.** `Desktop` 폴더 안에 `research` 폴더가 있고, 그 안에 `2024` 폴더가 있다. 한 번에 이동하려면?
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -51,11 +56,13 @@ nav_order: 10
 <pre><code class="language-powershell">cd Desktop\research\2024</code></pre>
 
 </details>
+{:/nomarkdown}
 
 ---
 
 **Q4.** 방금 들어온 폴더에서 한 단계 위로 나가고 싶다.
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -64,11 +71,13 @@ nav_order: 10
 <p>두 단계 올라가려면 <code>cd ..\..</code></p>
 
 </details>
+{:/nomarkdown}
 
 ---
 
 **Q5.** 어디에 있든 홈 폴더(`C:\Users\사용자이름`)로 바로 가고 싶다.
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -76,11 +85,13 @@ nav_order: 10
 <pre><code class="language-powershell">cd ~</code></pre>
 
 </details>
+{:/nomarkdown}
 
 ---
 
 **Q6.** `2024_Cosmetic_Stability_Test_Results`라는 폴더가 있다. 이 긴 이름을 전부 타이핑하지 않고 이동하려면?
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -89,11 +100,13 @@ nav_order: 10
 <p><code>2024</code>까지만 치고 Tab을 누르면 자동완성돼요. 여러 개가 있으면 Tab을 두 번 눌러서 후보 목록을 확인하세요.</p>
 
 </details>
+{:/nomarkdown}
 
 ---
 
 **Q7.** 현재 폴더에 파일이 많은데 `.csv` 파일만 보고 싶다.
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -102,11 +115,13 @@ nav_order: 10
 <p><code>*</code>는 "아무 문자나"를 의미해요. <code>*.csv</code>는 <code>.csv</code>로 끝나는 모든 파일이에요.</p>
 
 </details>
+{:/nomarkdown}
 
 ---
 
 **Q8.** `sample_A_week1.csv`, `sample_A_week4.csv`, `sample_B_week1.csv` 중 `sample_A`로 시작하는 파일만 `backup` 폴더로 복사하고 싶다.
 
+{::nomarkdown}
 <details>
 
 <summary>정답 보기</summary>
@@ -115,6 +130,7 @@ nav_order: 10
 cp sample_A* backup\</code></pre>
 
 </details>
+{:/nomarkdown}
 
 ---
 
@@ -336,6 +352,7 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\04_log_analysis
 
 **Step 1.** 파일이 몇 개인지 확인하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -343,9 +360,11 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\04_log_analysis
 <pre><code class="language-powershell">dir *.log</code></pre>
 
 </details>
+{:/nomarkdown}
 
 **Step 2.** `server_log_01.log` 파일 내용을 확인하세요. 어떤 형식인지 파악하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -353,9 +372,11 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\04_log_analysis
 <pre><code class="language-powershell">cat server_log_01.log</code></pre>
 
 </details>
+{:/nomarkdown}
 
 **Step 3.** 모든 로그 파일에서 `WARN`이 포함된 줄만 골라내세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -364,9 +385,11 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\04_log_analysis
 <p>Mac/Linux라면: <code>grep "WARN" *.log</code></p>
 
 </details>
+{:/nomarkdown}
 
 **Step 4.** WARN 로그만 골라내서 `warn_summary.txt` 파일로 저장하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -375,9 +398,11 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\04_log_analysis
 cat warn_summary.txt</code></pre>
 
 </details>
+{:/nomarkdown}
 
 **Step 5.** WARN 로그가 총 몇 줄인지 세어보세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -385,6 +410,7 @@ cat warn_summary.txt</code></pre>
 <pre><code class="language-powershell">Select-String -Path *.log -Pattern "WARN" | Measure-Object -Line</code></pre>
 
 </details>
+{:/nomarkdown}
 
 **Step 6.** AI에게 스크립트를 요청해서 레벨별(INFO / WARN / DEBUG) 건수를 한 번에 집계해보세요.
 
@@ -429,6 +455,7 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\05_image_processing
 
 **Step 1.** 폴더 안의 파일 목록을 확인하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -436,9 +463,11 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\05_image_processing
 <pre><code class="language-powershell">dir</code></pre>
 
 </details>
+{:/nomarkdown}
 
 **Step 2.** 가상환경을 만들고 활성화한 뒤, 필요한 패키지를 설치하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -458,9 +487,11 @@ source .venv/bin/activate
 pip install -r requirements.txt</code></pre>
 
 </details>
+{:/nomarkdown}
 
 **Step 3.** 이미지 1개에만 먼저 워터마크를 적용해보세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -469,9 +500,11 @@ pip install -r requirements.txt</code></pre>
 <p>성공하면 <code>watermarked_test_image_1.jpg</code> 파일이 생깁니다.</p>
 
 </details>
+{:/nomarkdown}
 
 **Step 4.** `watermarked_test_image_1.jpg`가 생성됐는지 확인하고, 탐색기에서 열어서 워터마크가 찍혔는지 확인하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -481,9 +514,11 @@ pip install -r requirements.txt</code></pre>
 ii watermarked_test_image_1.jpg</code></pre>
 
 </details>
+{:/nomarkdown}
 
 **Step 5.** 나머지 9개를 포함해 전체 이미지를 한 번에 처리하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -502,9 +537,11 @@ bash apply_batch.sh</code></pre>
 > 배치 스크립트는 반드시 위의 방법으로 실행하세요.
 
 </details>
+{:/nomarkdown}
 
 **Step 6.** 워터마크가 찍힌 파일이 10개 생성됐는지 확인하세요.
 
+{::nomarkdown}
 <details>
 
 <summary>힌트</summary>
@@ -513,6 +550,7 @@ bash apply_batch.sh</code></pre>
 <p>10개가 보이면 성공입니다.</p>
 
 </details>
+{:/nomarkdown}
 
 **목표 상태**
 ```
