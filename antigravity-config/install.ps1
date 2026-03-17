@@ -45,7 +45,7 @@ Get-ChildItem -Path "$ScriptDir\skills" -Directory | ForEach-Object {
     $skillName = $_.Name
     $target = "$AntigravityDir\skills\$skillName"
     New-Item -ItemType Directory -Force -Path $target | Out-Null
-    Copy-Item "$($_.FullName)\SKILL.md" "$target\SKILL.md" -Force
+    Copy-Item "$($_.FullName)\*" "$target\" -Recurse -Force
     Write-Host "✅ Skills/$skillName 설치 완료" -ForegroundColor Green
 }
 

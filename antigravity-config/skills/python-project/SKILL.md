@@ -1,6 +1,6 @@
 ---
 name: python-project
-description: Use when creating a Python project, installing packages, adding dependencies, running Python code, or encountering import/module errors
+description: Use when the user starts a new project, creates a folder, installs packages, or runs Python code. Triggers on: 새 프로젝트, 프로젝트 시작, 폴더 만들어줘, 작업 시작, 환경 설정, pip install, 패키지 설치, 가상환경, venv, import 에러, ModuleNotFoundError, requirements.txt. IMPORTANT: Whenever a new project or folder is created, venv setup is MANDATORY before any code or package installation.
 ---
 
 # Python 프로젝트 환경 관리 규칙

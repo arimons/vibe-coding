@@ -46,7 +46,7 @@ for skill_dir in "$SCRIPT_DIR/skills"/*/; do
   skill_name=$(basename "$skill_dir")
   target="$ANTIGRAVITY_DIR/skills/$skill_name"
   mkdir -p "$target"
-  cp "$skill_dir/SKILL.md" "$target/SKILL.md"
+  cp -r "$skill_dir/." "$target/"
   echo "✅ Skills/$skill_name 설치 완료"
 done
 

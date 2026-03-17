@@ -1,6 +1,6 @@
 ---
 name: git-commit
-description: Use when a feature, fix, or task has been completed and changes should be committed to git
+description: Use when the user requests any git operation or when a task is completed. Triggers on: 커밋, 커밋해줘, push, 푸시해줘, git 작업, git add, git push, git commit, 변경사항 저장, 작업 완료, 배포, 버전 관리
 ---
 
 # Git Commit 절차

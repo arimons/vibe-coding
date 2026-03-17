@@ -12,6 +12,9 @@ Gemfile.lock
 .AppleDouble
 .LSOverride
 
+# 강사용 유틸리티 (수강생 불필요)
+tutorials/**/generate_test_images.py
+
 # Virtual Environments
 .venv/
 venv/

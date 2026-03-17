@@ -19,6 +19,7 @@ nav_order: 1
 | [CLI 기초 가이드](cli-guide) | 터미널 명령어 기초 |
 | [Markdown 기초 가이드](markdown-guide) | 문서 작성 기초 |
 | [프론트엔드 & 백엔드 기초개념](frontend-backend) | 웹 구조 이해 |
+| [Antigravity 환경 세팅 가이드](antigravity-setup) | Rules · Skills · MCP 설치 (3주차 전 필수) |
 
 ---
 
@@ -107,7 +108,7 @@ nav_order: 1
 
 ### **Week 3: Streamlit GUI — CLI에서 브라우저로**
 
-📖 참고 자료: [Week 3 실습](week03-gui)
+📖 참고 자료: [Antigravity 환경 세팅 가이드](antigravity-setup) · [Week 3 실습](week03-gui)
 
 > 핵심 철학: Streamlit 문법을 배우는 게 아니라, AI한테 시켜서 앱을 뚝딱 만드는 경험
 

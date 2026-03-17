@@ -423,13 +423,24 @@ cd C:\Developer\vibe-coding\tutorials\week02-cli\practice\05_image_processing
 
 </details>
 
-**Step 2.** 가상환경을 활성화하세요. (이미 패키지가 설치되어 있습니다)
+**Step 2.** 가상환경을 만들고 활성화한 뒤, 필요한 패키지를 설치하세요.
 
 <details>
 <summary>힌트</summary>
 
-<pre><code class="language-powershell">.venv\Scripts\activate</code></pre>
-<p>프롬프트 앞에 <code>(.venv)</code>가 붙으면 성공입니다.</p>
+<pre><code class="language-powershell"># 가상환경 생성
+python -m venv .venv
+
+# 가상환경 활성화
+.venv\Scripts\activate
+
+# 패키지 설치
+pip install -r requirements.txt</code></pre>
+<p>프롬프트 앞에 <code>(.venv)</code>가 붙으면 활성화 성공입니다.</p>
+<p>Mac / Linux라면:</p>
+<pre><code class="language-bash">python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt</code></pre>
 
 </details>
 
@@ -459,7 +470,18 @@ ii watermarked_test_image_1.jpg</code></pre>
 <details>
 <summary>힌트</summary>
 
+<p><strong>방법 1 — Python으로 직접 실행 (Windows / Mac 공통)</strong></p>
 <pre><code class="language-powershell">python apply_watermark.py all</code></pre>
+
+<p><strong>방법 2 — 배치 스크립트 실행</strong></p>
+<pre><code class="language-powershell"># Windows
+.\apply_batch.ps1</code></pre>
+<pre><code class="language-bash"># Mac / Linux
+bash apply_batch.sh</code></pre>
+
+> ⚠️ <code>python apply_batch.ps1</code> 또는 <code>python apply_batch.sh</code> 처럼
+> 배치 스크립트를 python으로 실행하면 SyntaxError가 납니다.
+> 배치 스크립트는 반드시 위의 방법으로 실행하세요.
 
 </details>
 
