@@ -1,7 +1,15 @@
 # Antigravity 설정 설치 스크립트 (Windows PowerShell)
 # 사용법: powershell -ExecutionPolicy Bypass -File install.ps1
 
-$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$ScriptDir = $PSScriptRoot
+if (-not $ScriptDir) {
+    if ($env:SCRIPT_DIR) {
+        $ScriptDir = $env:SCRIPT_DIR.TrimEnd('\')
+    } else {
+        $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+    }
+}
+
 $GeminiDir = "$env:USERPROFILE\.gemini"
 $AntigravityDir = "$GeminiDir\antigravity"
 

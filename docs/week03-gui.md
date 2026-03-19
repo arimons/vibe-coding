@@ -28,7 +28,7 @@ Week 3 목표:  브라우저 → 클릭/드래그 → 결과 (시각화)
 
 ```powershell
 # 실습 폴더로 이동
-cd C:\Users\amore\dev\vibe-coding\tutorials\week03-gui
+cd C:\Developer\vibe-coding\tutorials\week03-gui
 
 # 가상환경 생성 및 활성화
 python -m venv .venv
