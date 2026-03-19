@@ -49,24 +49,48 @@ tags: [gemini, openai, claude, anthropic, llm, api, model]
 
 ### 예시 코드 (Python)
 
-```python
-import google.generativeai as genai
+> ⚠️ **패키지 주의**: `google-genai` 패키지 사용 (`import google.genai`)
+> `google-generativeai` (`import google.generativeai`) 는 **구형/deprecated — 절대 사용 금지**
 
-# ✅ 올바른 모델 사용
-model = genai.GenerativeModel("gemini-3.1-pro-preview")
+```python
+# ✅ 반드시 이 import 사용 (pip install google-genai)
+import google.genai as genai
+
+client = genai.Client(api_key="YOUR_API_KEY")
+
+# 일반 요청
+response = client.models.generate_content(
+    model="gemini-3.1-pro-preview",
+    contents="..."
+)
+print(response.text)
 
 # 경량 고볼륨 작업
-lite_model = genai.GenerativeModel("gemini-3.1-flash-lite-preview")
-
-# thinking level 제어 (3.x 계열)
-response = model.generate_content(
-    "...",
-    generation_config={"thinking_level": "HIGH"}
+response = client.models.generate_content(
+    model="gemini-3.1-flash-lite-preview",
+    contents="..."
 )
 
-# ❌ 사용 금지 예시
-# model = genai.GenerativeModel("gemini-2.5-flash")   # 6월 종료 예정
-# model = genai.GenerativeModel("gemini-1.5-pro")     # 이미 종료
+# thinking 제어 (3.x 계열)
+from google.genai import types
+
+response = client.models.generate_content(
+    model="gemini-3.1-pro-preview",
+    contents="...",
+    config=types.GenerateContentConfig(
+        thinking_config=types.ThinkingConfig(thinking_budget=8192)
+    )
+)
+
+# ❌ 사용 금지 — 아래 패턴은 구형 SDK (google-generativeai)
+# import google.generativeai as genai          ← 금지
+# genai.configure(api_key=...)                 ← 금지
+# genai.GenerativeModel("gemini-...")          ← 금지
+# model.generate_content(...)                  ← 금지 (client 패턴 사용할 것)
+
+# ❌ 사용 금지 모델명
+# client.models.generate_content(model="gemini-2.5-flash", ...)   # 6월 종료 예정
+# client.models.generate_content(model="gemini-1.5-pro", ...)     # 이미 종료
 ```
 
 ---
