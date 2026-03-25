@@ -1,11 +1,6 @@
 title: 바이브 코딩 - 연구원을 위한 실용 프로그래밍
 description: 코드 없이 AI로 만드는 자동화 도구
-# theme: minima  # 커스텀 레이아웃으로 대체
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
+theme: minima
 lang: ko
 
 # GitHub Pages 설정
@@ -16,6 +11,14 @@ kramdown:
   input: GFM
   syntax_highlighter: rouge
   parse_block_html: true
+
+# 모든 페이지에 커스텀 레이아웃 적용
+# (_layouts/default.html 이 minima 기본 레이아웃보다 우선 적용됨)
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 
 # 네비게이션
 header_pages:
