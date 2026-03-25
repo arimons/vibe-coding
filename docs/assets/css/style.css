@@ -279,6 +279,93 @@ hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
   border-top: 1px solid var(--border);
 }
 
+/* ── Dark Mode — Cyber Electric Blue (Dark_Theme v1.0) ─────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page:        #000000;
+    --bg-card:        #111111;
+    --bg-code-inline: #0D1117;
+    --bg-code-block:  #0D1117;
+    --text-main:      #FFFFFF;
+    --text-sub:       #888888;
+    --text-code:      #E8EAF0;
+    --border:         #222222;
+    --accent-main:    #007AFF;
+    --accent-sub:     #003EB3;
+    --glow-color:     rgba(0, 122, 255, 0.25);
+  }
+
+  /* 사이드바 */
+  .site-nav {
+    background: #0A0A0A;
+    border-right-color: #222222;
+  }
+  .site-nav .nav-logo { color: #60A5FA; }
+  .site-nav .nav-tagline { border-bottom-color: #222222; }
+  .site-nav ul li a { color: #888888; }
+  .site-nav ul li a:hover,
+  .site-nav ul li a.active {
+    background: rgba(0, 122, 255, 0.12);
+    color: #007AFF;
+  }
+
+  /* 타이포그래피 */
+  h2 { color: #60A5FA; border-bottom-color: #222222; }
+  h3 { color: #007AFF; }
+  a  { color: #58A6FF; }
+  a:hover { border-bottom-color: #58A6FF; }
+
+  /* 페이지 헤더 */
+  .page-header { border-bottom-color: #222222; }
+
+  /* 모드에서 blockquote 배경은 더 어둥게 */
+  blockquote {
+    background: rgba(0, 122, 255, 0.08);
+    border-left-color: #007AFF;
+  }
+  blockquote p { color: #60A5FA; }
+
+  /* 인라인 코드 */
+  code {
+    background: #0D1117;
+    color: #58A6FF;
+    border-color: #30363D;
+  }
+
+  /* 코드블록 */
+  .highlighter-rouge {
+    border-color: #30363D;
+  }
+  div.highlight {
+    background: #0D1117;
+  }
+  pre,
+  pre.highlight {
+    background: #0D1117;
+  }
+  .page-content > pre,
+  article > pre {
+    border-color: #30363D !important;
+  }
+
+  /* 테이블 */
+  th { background: var(--accent-sub); }
+  td { border-bottom-color: #222222; }
+  tr:nth-child(even) td { background: #111111; }
+  tr:hover td { background: rgba(0, 122, 255, 0.08); }
+
+  /* badge — Dark Theme 스타일 (outline) */
+  .badge {
+    background: transparent;
+    border: 1.5px solid var(--accent-main);
+    color: var(--accent-main);
+  }
+
+  /* 기타 */
+  hr { border-top-color: #222222; }
+  .site-footer { border-top-color: #222222; }
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .site-nav { display: none; }
