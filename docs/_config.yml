@@ -3,7 +3,6 @@ description: 코드 없이 AI로 만드는 자동화 도구
 theme: minima
 lang: ko
 
-# GitHub Pages 설정
 markdown: kramdown
 highlighter: rouge
 
@@ -12,21 +11,11 @@ kramdown:
   syntax_highlighter: rouge
   parse_block_html: true
 
-# 모든 페이지에 커스텀 레이아웃 적용
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: "default"
-
-# 네비게이션
 header_pages:
   - index.md
 
-# Permalink
 permalink: /:title/
 
-# 플러그인
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
