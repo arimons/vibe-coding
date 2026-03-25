@@ -1,6 +1,11 @@
 title: 바이브 코딩 - 연구원을 위한 실용 프로그래밍
 description: 코드 없이 AI로 만드는 자동화 도구
-theme: minima
+# theme: minima  # 커스텀 레이아웃으로 대체
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
 lang: ko
 
 # GitHub Pages 설정
