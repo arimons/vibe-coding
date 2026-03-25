@@ -24,3 +24,6 @@ include/
 lib/
 share/
 pyvenv.cfg
+
+# Claude Code worktrees (자동 생성, git에 포함 불필요)
+antigravity-config/.claude/
