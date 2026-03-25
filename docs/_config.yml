@@ -13,7 +13,6 @@ kramdown:
   parse_block_html: true
 
 # 모든 페이지에 커스텀 레이아웃 적용
-# (_layouts/default.html 이 minima 기본 레이아웃보다 우선 적용됨)
 defaults:
   - scope:
       path: ""
