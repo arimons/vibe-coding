@@ -1,38 +1,32 @@
 /* ============================================================
-   Light Theme — Blue Pattern (Trusted Infrastructure)
-   Design Guide v1.0 | vibe-coding docs
+   Light Theme — Blue Pattern | vibe-coding docs
    ============================================================ */
 
-/* 1. Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap');
 
-/* 2. Design Tokens — Blue Pattern */
 :root {
-  --bg-page:    #FAFAFA;
-  --bg-card:    #FFFFFF;
-  --bg-code:    #F3F6FB;
-  --text-main:  #1A1A1A;
-  --text-sub:   #666666;
-  --border:     #E8ECF0;
+  --bg-page:     #FAFAFA;
+  --bg-card:     #FFFFFF;
+  --bg-code-inline: #F3F6FB;
+  --bg-code-block:  #1A1A2E;
+  --text-main:   #1A1A1A;
+  --text-sub:    #666666;
+  --text-code:   #E8EAF0;
+  --border:      #E8ECF0;
   --accent-main: #1F5795;
   --accent-sub:  #001C58;
-  --max-width: 860px;
-  --nav-width: 240px;
+  --nav-width:   240px;
+  --max-width:   860px;
 }
 
-/* 3. Reset */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* ── Reset ───────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg-page);
+  background: var(--bg-page);
   color: var(--text-main);
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
@@ -40,26 +34,20 @@ body {
   font-size: 16px;
 }
 
-/* ============================================================
-   Site Layout
-   ============================================================ */
-
-.site-wrapper {
-  display: flex;
-  min-height: 100vh;
-}
+/* ── Layout ──────────────────────────────────────────────── */
+.site-wrapper { display: flex; min-height: 100vh; }
 
 .site-nav {
   width: var(--nav-width);
   min-width: var(--nav-width);
-  background-color: var(--bg-card);
+  flex-shrink: 0;
+  background: var(--bg-card);
   border-right: 1px solid var(--border);
   padding: 2.5rem 1.5rem;
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  flex-shrink: 0;
 }
 
 .site-nav .nav-logo {
@@ -82,13 +70,8 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-.site-nav ul {
-  list-style: none;
-}
-
-.site-nav ul li {
-  margin-bottom: 0.2rem;
-}
+.site-nav ul { list-style: none; }
+.site-nav ul li { margin-bottom: 0.2rem; }
 
 .site-nav ul li a {
   display: block;
@@ -103,13 +86,11 @@ body {
 
 .site-nav ul li a:hover,
 .site-nav ul li a.active {
-  background-color: #EEF3FB;
+  background: #EEF3FB;
   color: var(--accent-main);
 }
 
-.site-nav ul li a.active {
-  font-weight: 700;
-}
+.site-nav ul li a.active { font-weight: 700; }
 
 .site-main {
   flex: 1;
@@ -118,10 +99,7 @@ body {
   max-width: calc(var(--max-width) + 10rem);
 }
 
-/* ============================================================
-   Typography
-   ============================================================ */
-
+/* ── Typography ──────────────────────────────────────────── */
 h1, h2, h3, h4 {
   font-family: 'Cabinet Grotesk', 'Noto Sans KR', sans-serif;
   letter-spacing: -0.04em;
@@ -129,69 +107,22 @@ h1, h2, h3, h4 {
   color: var(--text-main);
 }
 
-h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 900;
-  margin-bottom: 1.5rem;
-  margin-top: 0;
-}
+h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; margin-bottom: 1.5rem; }
+h2 { font-size: clamp(1.35rem, 2.5vw, 1.75rem); font-weight: 800; margin-top: 3.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); color: var(--accent-sub); }
+h3 { font-size: 1.15rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; color: var(--accent-main); }
+h4 { font-size: 1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; }
 
-h2 {
-  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-  font-weight: 800;
-  margin-top: 3.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--border);
-  color: var(--accent-sub);
-}
+p { margin-bottom: 1.2rem; }
+strong { font-weight: 700; }
 
-h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 0.6rem;
-  color: var(--accent-main);
-}
+a { color: var(--accent-main); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+a:hover { border-bottom-color: var(--accent-main); }
 
-h4 {
-  font-size: 1rem;
-  font-weight: 700;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-main);
-}
-
-p {
-  margin-bottom: 1.2rem;
-  font-weight: 400;
-  color: var(--text-main);
-}
-
-strong {
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-a {
-  color: var(--accent-main);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.15s ease;
-}
-
-a:hover {
-  border-bottom-color: var(--accent-main);
-}
-
-/* ============================================================
-   Components
-   ============================================================ */
-
+/* ── Components ──────────────────────────────────────────── */
 .badge {
   display: inline-block;
-  background-color: var(--accent-sub);
-  color: #FFFFFF;
+  background: var(--accent-sub);
+  color: #fff;
   padding: 6px 16px;
   border-radius: 4px;
   font-weight: 700;
@@ -201,193 +132,144 @@ a:hover {
   text-transform: uppercase;
 }
 
-/* 텍스트 강조 밑줄 — .text-mark 사용 (.highlight는 Rouge가 점유) */
-.text-mark {
-  position: relative;
-  display: inline;
-  z-index: 1;
-}
+.text-mark { position: relative; display: inline; z-index: 1; }
 .text-mark::after {
   content: '';
   position: absolute;
-  bottom: 0.1em;
-  left: -1%;
-  width: 102%;
-  height: 0.4em;
-  background-color: var(--accent-main);
+  bottom: 0.1em; left: -1%;
+  width: 102%; height: 0.4em;
+  background: var(--accent-main);
   opacity: 0.15;
   z-index: -1;
   border-radius: 2px;
 }
 
-.page-header {
-  margin-bottom: 3rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
-}
+.page-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+.page-header h1 { margin-bottom: 0.5rem; }
+.page-header .page-meta { font-size: 0.85rem; color: var(--text-sub); }
 
-.page-header h1 {
-  margin-bottom: 0.5rem;
-}
-
-.page-header .page-meta {
-  font-size: 0.85rem;
-  color: var(--text-sub);
-}
-
-/* ============================================================
-   Blockquote
-   ============================================================ */
-
+/* ── Blockquote ──────────────────────────────────────────── */
 blockquote {
   border-left: 4px solid var(--accent-main);
-  background-color: #EEF3FB;
+  background: #EEF3FB;
   margin: 1.5rem 0;
   padding: 1rem 1.25rem;
   border-radius: 0 6px 6px 0;
 }
+blockquote p { margin: 0; color: var(--accent-sub); font-size: 0.95rem; font-weight: 500; }
 
-blockquote p {
-  margin: 0;
-  color: var(--accent-sub);
-  font-size: 0.95rem;
-  font-weight: 500;
-}
+/* ── Code ────────────────────────────────────────────────── */
+/*
+  Rouge HTML 구조:
+  <div class="language-bash highlighter-rouge">   ← 언어 있을 때 외부 래퍼
+    <div class="highlight">                        ← 항상 있는 래퍼
+      <pre class="highlight">                      ← pre에도 highlight 클래스 붙음
+        <code>...</code>
+      </pre>
+    </div>
+  </div>
 
-/* ============================================================
-   Code — Rouge .highlight 충돌 방지
-   Rouge가 코드블록을 <div class="highlight"><pre>...</pre></div> 로 감쌈
-   → .highlight 를 인라인 컴포넌트로 쓰면 코드블록 레이아웃 파괴됨
-   → 해결: .highlight 는 블록 레이아웃 유지, 텍스트 강조는 .text-mark 사용
-   ============================================================ */
+  언어 없는 코드블록:
+  <div class="highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code>...</code></pre>
+    </div>
+  </div>
+*/
 
-/* 인라인 코드 */
+/* 인라인 코드 — pre 밖의 code만 */
 code {
-  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.875em;
-  background-color: var(--bg-code);
+  background: var(--bg-code-inline);
   color: var(--accent-main);
   padding: 0.15em 0.45em;
   border-radius: 4px;
   border: 1px solid var(--border);
+  white-space: nowrap;
 }
 
-/* Rouge 래퍼 — 블록 레이아웃 유지 */
-div.highlight {
-  background-color: #1A1A2E;
-  border-radius: 8px;
-  margin: 1.5rem 0;
-  border: 1px solid #2D2D4A;
-  overflow-x: auto;
-}
-
-/* pre 태그 */
+/* Rouge 래퍼들 — 전부 블록 레이아웃 강제 */
+.highlighter-rouge,
+div.highlight,
+pre.highlight,
 pre {
-  background-color: #1A1A2E;
-  border-radius: 8px;
-  padding: 1.5rem;
-  overflow-x: auto;
+  display: block !important;
+  position: static !important;
+}
+
+/* 바깥 래퍼 */
+.highlighter-rouge {
   margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
   border: 1px solid #2D2D4A;
 }
 
-/* Rouge 래퍼 안의 pre — 이중 margin 방지 */
-div.highlight pre {
-  background: transparent;
-  border: none;
-  margin: 0;
-  padding: 1.5rem;
+/* 안쪽 div.highlight */
+div.highlight {
+  background: var(--bg-code-block);
+  margin: 0 !important;
+  padding: 0;
+  border: none !important;
   border-radius: 0;
 }
 
-/* pre 안의 code — 인라인 스타일 덮어쓰기 */
-pre code,
-div.highlight pre code {
-  background: none !important;
-  color: #E8EAF0 !important;
-  border: none !important;
-  padding: 0 !important;
+/* pre — 언어 없는 단독 pre 포함 */
+pre,
+pre.highlight {
+  background: var(--bg-code-block);
+  color: var(--text-code);
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
   line-height: 1.7;
+  padding: 1.5rem;
+  margin: 0 !important;
+  overflow-x: auto;
+  white-space: pre;
+  border: none !important;
+  border-radius: 0;
 }
 
-/* ============================================================
-   Tables
-   ============================================================ */
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.9rem;
+/* pre 안의 code — 인라인 스타일 전부 제거 */
+pre code,
+pre.highlight code,
+div.highlight pre code {
+  display: inline !important;
+  background: transparent !important;
+  color: var(--text-code) !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+  white-space: inherit !important;
 }
 
-th {
-  background-color: var(--accent-sub);
-  color: #FFFFFF;
-  font-weight: 700;
-  padding: 0.75rem 1rem;
-  text-align: left;
-  letter-spacing: -0.02em;
-  font-family: 'Cabinet Grotesk', 'Noto Sans KR', sans-serif;
+/* 언어 없는 단독 pre (highlighter-rouge 래퍼 없을 때) */
+.page-content > pre,
+article > pre {
+  margin: 1.5rem 0 !important;
+  border-radius: 8px;
+  border: 1px solid #2D2D4A !important;
 }
 
-td {
-  padding: 0.65rem 1rem;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-main);
-}
+/* ── Tables ──────────────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+th { background: var(--accent-sub); color: #fff; font-weight: 700; padding: 0.75rem 1rem; text-align: left; font-family: 'Cabinet Grotesk', 'Noto Sans KR', sans-serif; }
+td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); }
+tr:nth-child(even) td { background: #F5F7FA; }
+tr:hover td { background: #EEF3FB; }
 
-tr:nth-child(even) td {
-  background-color: #F5F7FA;
-}
+/* ── Lists ───────────────────────────────────────────────── */
+ul, ol { padding-left: 1.5rem; margin-bottom: 1.2rem; }
+li { margin-bottom: 0.4rem; line-height: 1.7; }
 
-tr:hover td {
-  background-color: #EEF3FB;
-}
+ul.task-list { list-style: none; padding-left: 0.25rem; }
+ul.task-list li { padding-left: 1.75rem; position: relative; }
+ul.task-list li input[type="checkbox"] { position: absolute; left: 0; top: 0.35rem; accent-color: var(--accent-main); }
 
-/* ============================================================
-   Lists
-   ============================================================ */
-
-ul, ol {
-  padding-left: 1.5rem;
-  margin-bottom: 1.2rem;
-}
-
-li {
-  margin-bottom: 0.4rem;
-  line-height: 1.7;
-}
-
-ul.task-list {
-  list-style: none;
-  padding-left: 0.25rem;
-}
-
-ul.task-list li {
-  padding-left: 1.75rem;
-  position: relative;
-}
-
-ul.task-list li input[type="checkbox"] {
-  position: absolute;
-  left: 0;
-  top: 0.35rem;
-  accent-color: var(--accent-main);
-  width: 1rem;
-  height: 1rem;
-}
-
-/* ============================================================
-   Misc
-   ============================================================ */
-
-hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 2.5rem 0;
-}
+/* ── Misc ────────────────────────────────────────────────── */
+hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
 
 .site-footer {
   text-align: center;
@@ -397,10 +279,7 @@ hr {
   border-top: 1px solid var(--border);
 }
 
-/* ============================================================
-   Responsive
-   ============================================================ */
-
+/* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .site-nav { display: none; }
   .site-main { padding: 2rem 1.5rem; }

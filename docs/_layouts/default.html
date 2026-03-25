@@ -6,6 +6,47 @@
   <title>{% if page.title %}{{ page.title }} — {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   <meta name="description" content="{{ site.description }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <style>
+    /* 코드블록 긴급 보정 — CSS 파일 충돌 방지용 인라인 오버라이드 */
+    .highlighter-rouge, div.highlight, pre.highlight, pre {
+      display: block !important;
+      position: static !important;
+    }
+    .highlighter-rouge {
+      margin: 1.5rem 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #2D2D4A;
+    }
+    div.highlight {
+      background: #1A1A2E !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+    }
+    pre, pre.highlight {
+      background: #1A1A2E !important;
+      color: #E8EAF0 !important;
+      font-family: 'JetBrains Mono', monospace !important;
+      font-size: 0.875rem !important;
+      line-height: 1.7 !important;
+      padding: 1.5rem !important;
+      margin: 0 !important;
+      overflow-x: auto !important;
+      white-space: pre !important;
+      border: none !important;
+      border-radius: 0 !important;
+    }
+    pre code, pre.highlight code, div.highlight pre code {
+      background: transparent !important;
+      color: #E8EAF0 !important;
+      border: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      font-size: inherit !important;
+      white-space: pre !important;
+    }
+  </style>
 </head>
 <body>
 
