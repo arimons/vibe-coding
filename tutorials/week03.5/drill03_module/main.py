@@ -8,11 +8,9 @@ name = input("이름을 입력하세요: ")
 print(greet(name))
 print()
 
-data_path = "data/sample.txt"
-content = read_sample(data_path)
+content = read_sample("data/sample.txt")
 print("--- data/sample.txt 내용 ---")
 print(content)
 print()
-
 print(f"[현재 실행 위치]: {os.getcwd()}")
-print("✅ main.py가 올바른 위치에서 실행되었습니다.")
+print("✅ 올바른 위치에서 실행되었습니다.")

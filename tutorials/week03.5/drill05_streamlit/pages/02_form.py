@@ -5,8 +5,7 @@ st.info("이 파일은 pages/02_form.py 입니다.")
 
 st.markdown("---")
 
-with st.form("my_form"):
-    st.subheader("간단한 자기소개")
+with st.form("intro_form"):
     name = st.text_input("이름")
     week = st.selectbox("현재 수강 주차", ["1주차", "2주차", "3주차", "3.5주차", "4주차"])
     feeling = st.slider("터미널 친숙도 (1=생소함, 10=익숙함)", 1, 10, 5)

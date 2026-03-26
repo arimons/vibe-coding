@@ -1,13 +1,12 @@
+import os
+
 print("=" * 40)
 print("🎉 찾았습니다! secret.py 실행 성공!")
 print("=" * 40)
 print()
-print("당신이 지금 있는 곳:")
-
-import os
-print(f"  {os.getcwd()}")
+print(f"현재 위치: {os.getcwd()}")
 print()
-print("여기까지 오는 데 사용한 명령어들:")
+print("여기까지 온 경로:")
 print("  cd drill01_navigation")
 print("  cd chapter1")
 print("  cd deeper")

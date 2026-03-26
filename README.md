@@ -34,7 +34,7 @@ vibe-coding/
 │   └── [주차별 실습 가이드]
 │       ├── week02-practice.md     # Week 2: CLI 실습
 │       ├── week03-gui.md          # Week 3: Streamlit GUI 실습
-│       ├── week3.5.md             # Week 3.5: 터미널 기초 보충 세션
+│       ├── week03.5.md            # Week 03.5: 터미널 기초 보충 세션
 │       └── streamlit.md           # Streamlit 레퍼런스
 │
 ├── tutorials/                     # 주차별 실습 파일
@@ -44,7 +44,7 @@ vibe-coding/
 │   ├── week03-gui/
 │   │   └── data/                  # Week 3 실습용 샘플 CSV 데이터
 │   │
-│   └── week3.5/                   # Week 3.5 터미널 기초 드릴
+│   └── week03.5/                  # Week 03.5 터미널 기초 드릴
 │       ├── drill01_navigation/    # ls, cd, pwd 탐색 훈련
 │       │   └── chapter1/deeper/secret.py
 │       ├── drill02_plain_run/     # python 파일명.py 직접 실행
@@ -88,7 +88,7 @@ push 후 1~2분이면 자동 빌드됩니다.
 | Week 1 | 쇼케이스 — AI로 무엇이 가능한가 |
 | Week 2 | 개발 환경 이해 + CLI 기초 |
 | Week 3 | Streamlit GUI — CLI에서 브라우저로 |
-| **Week 3.5** | **터미널 기초 보충 세션 (드릴 01~05)** |
+| **Week 03.5** | **터미널 기초 보충 세션 (드릴 01~05)** |
 | Week 4 | Excel 처리 (pandas) |
 | Week 5 | PDF 처리 + LLM API 입문 |
 | Week 6 | 크롤링 |
