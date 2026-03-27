@@ -7,13 +7,13 @@
   <meta name="description" content="{{ site.description }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <style>
-    /* 코드블록 래퍼 — 블록 강제 */
-    .highlighter-rouge, div.highlight, pre.highlight, pre {
+    /* 블록 코드 래퍼만 block — div/pre 태그에만 적용, code 태그 제외 */
+    div.highlighter-rouge, div.highlight, pre.highlight, pre {
       display: block !important;
       position: static !important;
     }
-    /* 인라인 code — 블록 전환 절대 방지 */
-    :not(pre) > code {
+    /* 인라인 code — highlighter-rouge 클래스가 붙어도 inline 유지 */
+    code.highlighter-rouge, :not(pre) > code {
       display: inline !important;
     }
     /* pre 안의 code — 인라인 스타일 초기화 */
