@@ -179,6 +179,7 @@ blockquote p { margin: 0; color: var(--accent-sub); font-size: 0.95rem; font-wei
 
 /* 인라인 코드 — pre 밖의 code만 */
 code {
+  display: inline;           /* 블록 전환 방지 — 명시적으로 인라인 고정 */
   font-family: 'Nanum Gothic Coding', monospace;
   font-size: 0.875em;
   background: var(--bg-code-inline);
