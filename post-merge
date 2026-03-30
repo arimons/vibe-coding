@@ -1,0 +1,3 @@
+#!/bin/sh
+# pull 후 tutorials 폴더를 강사 버전으로 자동 초기화
+git checkout -- tutorials/

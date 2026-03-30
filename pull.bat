@@ -13,7 +13,7 @@ cd /d C:\Developer\vibe-coding
 REM hook 파일이 없으면 설치 (최초 1회 자동 설치)
 if not exist ".git\hooks\post-merge" (
     echo [자동 설치] Git hook 설치 중...
-    copy ".githooks\post-merge" ".git\hooks\post-merge" >nul
+    copy "post-merge" ".git\hooks\post-merge" >nul
     echo 완료!
     echo.
 )
