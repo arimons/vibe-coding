@@ -1,0 +1,4 @@
+#!/bin/sh
+# post-merge hook: pull 후 tutorials 폴더를 항상 강사 버전으로 초기화
+# 수강생이 실습 중 변경한 내용은 버려지고, 최신 강의 자료로 갱신됩니다.
+git checkout -- tutorials/
