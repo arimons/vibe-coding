@@ -1,0 +1,23 @@
+# Syncthing 및 임시 파일 제외
+.stfolder/
+.syncthing.*
+*.tmp
+
+# 대용량 및 바이너리 데이터 폴더 제외
+**/data/*.xlsx
+**/data/*.csv
+tutorials/**/data/
+
+# Jekyll 및 빌드 결과물 제외
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+
+# 가상환경 및 기타 시스템 폴더
+.venv/
+venv/
+.claude/
+antigravity-config/.claude/
+node_modules/
