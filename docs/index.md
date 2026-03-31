@@ -12,14 +12,35 @@ nav_order: 1
 
 ## 📚 학습 자료 모음
 
+### 🔧 환경 설정
+
+| 자료 | 설명 |
+|------|------|
+| [Antigravity 세팅 가이드](antigravity-setup) | Rules · Skills · MCP 설치 (수업 전 필수) |
+
+> Git · Python · Node.js · Antigravity 설치 가이드는 별도 제공 예정
+
+### 📖 기초 가이드
+
 | 자료 | 설명 |
 |------|------|
 | [용어 사전](glossary) | 프론트엔드/백엔드/API 등 필수 개념 정리 |
-| [Git 초보자 가이드](git-guide) | 버전 관리 기초부터 실습까지 |
+| [Git 가이드](git-guide) | 버전 관리 기초 + 문제 상황 해결 |
 | [CLI 기초 가이드](cli-guide) | 터미널 명령어 기초 |
 | [Markdown 기초 가이드](markdown-guide) | 문서 작성 기초 |
 | [프론트엔드 & 백엔드 기초개념](frontend-backend) | 웹 구조 이해 |
-| [Antigravity 환경 세팅 가이드](antigravity-setup) | Rules · Skills · MCP 설치 (3주차 전 필수) |
+| [Streamlit 가이드](streamlit) | Streamlit 레퍼런스 |
+| [Antigravity 가이드](antigravity-guide) | Antigravity 사용 가이드 |
+| [Antigravity 심화](antigravity-advanced) | Rules · Skills 심화 설정 |
+
+### 🗂️ 주차별 실습 자료
+
+| 자료 | 설명 |
+|------|------|
+| [Week 2 실습](week02-practice) | CLI 기초 실습 파일 |
+| [Week 3 실습](week03-gui) | Streamlit GUI 실습 |
+| [Week 03.5 터미널 실습](week03.5) | 터미널 기초 보충 세션 |
+| [Week 4 실습](week04-pandas) | 임상 데이터 변환기 (pandas) |
 
 ---
 
@@ -156,23 +177,31 @@ nav_order: 1
 
 ---
 
-### **Week 4: Excel 처리**
+### **Week 4: 데이터 변환 — pandas + Streamlit**
+
+📖 참고 자료: [Week 4 실습](week04-pandas)
+
+> 핵심 시나리오: 측정 소프트웨어 양식 → R/SPSS 입력 양식 변환기 만들기
 
 #### 주제
-- pandas 가능성 이해 (읽기 / 필터 / 정렬 / 병합 / 저장)
-- 내 Excel 구조 파악하기
-- Streamlit에서 Excel 업로드 → 처리 → 그래프 + 다운로드 흐름
+- pandas 핵심 기능 체험 (읽기 / 정제 / 변환 / 집계 / 포맷 변환)
+- 측정값에 붙은 단위 제거, 텍스트 코딩 변환, 형식 정제
+- Streamlit GUI로 변환 규칙을 직접 조작하면서 결과 확인
 
-#### 시연 (30분)
-1. 여러 Excel 파일 병합 3단계로 진행
-2. Streamlit 업로드 UI와 연결하는 흐름
+#### 시연 (20분)
+1. sample_raw.csv 열어서 문제점 파악
+2. 온성한 데이터 → 앱 한 줄로 변환하는 과정 시연
 
-#### 실습 (50분)
-- 본인 Excel 파일로 단계별 요청 → 실행 → 확인
-- 결과 다운로드 버튼 + 시각화 추가
+#### 실습 (60분)
+- **Phase 1**: 파일 업로드 → 구조 파악 (열 타입, 결측값 확인)
+- **Phase 2**: 열 이름 변경 + 순서 재배치
+- **Phase 3**: 단위 제거 체크박스로 선택 → 실시간 미리보기
+- **Phase 4**: 코딩 변환 매핑 테이블 입력 → 적용
+- **Phase 5**: Wide → Long 포맷 변환 (반복측정 데이터)
+- **Phase 6**: CSV / Excel 다운로드
 
 #### 과제
-본인 업무 Excel 반복 작업 1개 Streamlit 앱으로 자동화
+본인이 실제로 쓰는 Excel 파일을 업로드해서 AI에게 변환 기능 추가 요청해보기
 
 ---
 
