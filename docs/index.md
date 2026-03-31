@@ -40,7 +40,7 @@ nav_order: 1
 | [Week 2 실습](week02-practice) | CLI 기초 실습 파일 |
 | [Week 3 실습](week03-gui) | Streamlit GUI 실습 |
 | [Week 03.5 터미널 실습](week03.5) | 터미널 기초 보충 세션 |
-| [Week 4 실습](week04-pandas) | 임상 데이터 변환기 (pandas) |
+| [Week 4 실습](week04-pandas) | 데이터 변환·분석 (pandas + 시각화) |
 
 ---
 
@@ -177,28 +177,39 @@ nav_order: 1
 
 ---
 
-### **Week 4: 데이터 변환 — pandas + Streamlit**
+### **Week 4: 데이터 변환·분석 — pandas + Streamlit**
 
 📖 참고 자료: [Week 4 실습](week04-pandas)
 
-> 핵심 시나리오: 측정 소프트웨어 양식 → R/SPSS 입력 양식 변환기 만들기
+> 두 가지 앱으로 실습합니다.
+> **Part 1** — 측정 소프트웨어 양식 → R/SPSS 입력 양식 변환기 (`app.py`)
+> **Part 2** — 장비 Raw Data → 취합 → 통계 → 시각화 분석 파이프라인 (`app_analysis.py`)
 
 #### 주제
 - pandas 핵심 기능 체험 (읽기 / 정제 / 변환 / 집계 / 포맷 변환)
-- 측정값에 붙은 단위 제거, 텍스트 코딩 변환, 형식 정제
-- Streamlit GUI로 변환 규칙을 직접 조작하면서 결과 확인
+- 정규식(regex)으로 피험자 정보 분리
+- 멀티시트 Excel 취합 → Tidy Data 변환
+- Z-score 표준화 + Violin Plot 시각화
+- Streamlit GUI로 변환·분석 규칙을 직접 조작하면서 결과 확인
 
 #### 시연 (20분)
-1. sample_raw.csv 열어서 문제점 파악
-2. 온성한 데이터 → 앱 한 줄로 변환하는 과정 시연
+1. sample_raw.csv 열어서 문제점 파악 → app.py로 변환 시연
+2. 장비 Raw Data(cholesterol, fatty acid) → app_analysis.py로 취합·시각화 시연
 
 #### 실습 (60분)
-- **Phase 1**: 파일 업로드 → 구조 파악 (열 타입, 결측값 확인)
-- **Phase 2**: 열 이름 변경 + 순서 재배치
-- **Phase 3**: 단위 제거 체크박스로 선택 → 실시간 미리보기
-- **Phase 4**: 코딩 변환 매핑 테이블 입력 → 적용
-- **Phase 5**: Wide → Long 포맷 변환 (반복측정 데이터)
-- **Phase 6**: CSV / Excel 다운로드
+- **Part 1 — 변환기** (`streamlit run app.py`)
+  - Phase 1: 파일 업로드 → 구조 파악 (열 타입, 결측값 확인)
+  - Phase 2: 열 이름 변경 + 순서 재배치
+  - Phase 3: 정규식으로 단위 제거, 피험자 정보 분리
+  - Phase 4: 코딩 변환 매핑 (텍스트 → 숫자)
+  - Phase 5: Wide → Long 포맷 변환
+  - Phase 6: CSV / Excel 다운로드
+- **Part 2 — 분석 파이프라인** (`streamlit run app_analysis.py`)
+  - Step 1: Raw Data 로드 + 여러 파일 합치기
+  - Step 2: skiprows 설정, 정규식 분리, 멀티시트 취합
+  - Step 3: Z-score 계산 + 이상치 확인
+  - Step 4: Violin Plot / Box Plot / Paired Plot 시각화
+  - Step 5: 멀티시트 Excel 저장
 
 #### 과제
 본인이 실제로 쓰는 Excel 파일을 업로드해서 AI에게 변환 기능 추가 요청해보기
