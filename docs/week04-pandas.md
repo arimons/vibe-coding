@@ -304,8 +304,10 @@ V1_S22          →  1  과  22     (방문차수, 피험자번호 동시에)
 
 ---
 
-<details markdown="block">
+{::nomarkdown}
+<details>
 <summary>기호 상세 레퍼런스 — AI가 만든 패턴을 읽고 싶을 때 펼치기</summary>
+{:/nomarkdown}
 
 
 > 게임처럼 정규식을 익히고 싶다면 → [regexlearn.com](https://regexlearn.com/ko)
@@ -561,7 +563,9 @@ V3_S103  →  방문차수: 3,  피험자: 103
 | `$` | 문자열 끝 위치 | 뒤에 고정 |
 | `\s` | 공백 문자 | **s**pace |
 
+{::nomarkdown}
 </details>
+{:/nomarkdown}
 
 ---
 
