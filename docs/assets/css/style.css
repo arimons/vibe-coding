@@ -96,7 +96,6 @@ body {
   flex: 1;
   min-width: 0;
   padding: 4rem 5rem;
-  max-width: calc(var(--max-width) + 4rem);
 }
 
 /* ── Typography ──────────────────────────────────────────── */

@@ -305,7 +305,8 @@ V1_S22          →  1  과  22     (방문차수, 피험자번호 동시에)
 ---
 
 <details>
-<summary><strong>기호 상세 레퍼런스</strong> — AI가 만든 패턴을 읽고 싶을 때 펼치기</summary>
+<summary>기호 상세 레퍼런스 — AI가 만든 패턴을 읽고 싶을 때 펼치기</summary>
+
 
 > 게임처럼 정규식을 익히고 싶다면 → [regexlearn.com](https://regexlearn.com/ko)
 
