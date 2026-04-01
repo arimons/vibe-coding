@@ -304,7 +304,7 @@ V1_S22          →  1  과  22     (방문차수, 피험자번호 동시에)
 
 ---
 
-<details>
+<details markdown="block">
 <summary>기호 상세 레퍼런스 — AI가 만든 패턴을 읽고 싶을 때 펼치기</summary>
 
 
