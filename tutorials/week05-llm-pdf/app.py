@@ -43,6 +43,7 @@ def run_streaming(cmd: list, log_area) -> int:
     for line in iter(process.stdout.readline, ""):
         lines.append(line.rstrip())
         log_area.code("\n".join(lines[-40:]), language="")
+        print(line, end="", flush=True)  # 터미널에도 실시간 출력
     process.stdout.close()
     process.wait()
     return process.returncode
