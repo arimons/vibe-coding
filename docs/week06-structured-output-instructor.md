@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Week 6 — Structured Output
 nav_order: 10
 ---

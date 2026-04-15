@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Week 5 — PDF 문서 처리
 nav_order: 9
 ---

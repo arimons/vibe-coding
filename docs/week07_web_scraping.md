@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: Week 7 — 웹 스크래핑
 nav_order: 11
 ---
