@@ -75,20 +75,6 @@
   <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
     <main class="site-main">
 
-      <div class="page-header">
-        {% if page.badge %}
-        <span class="badge">{{ page.badge }}</span>
-        {% endif %}
-
-        {% if page.title %}
-        <h1>{{ page.title }}</h1>
-        {% endif %}
-
-        {% if page.description %}
-        <p class="page-meta">{{ page.description }}</p>
-        {% endif %}
-      </div>
-
       <article class="page-content">
         {{ content }}
       </article>
