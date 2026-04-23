@@ -45,3 +45,8 @@ pyproject.toml
 # Claude Code worktrees (자동 생성, git에 포함 불필요)
 antigravity-config/.claude/
 .claude
+
+# Python
+__pycache__/
+*.pyc
+

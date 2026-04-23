@@ -14,6 +14,10 @@ nav_order: 11
 
 1. [크롤링 vs 스크래핑](#1-크롤링-vs-스크래핑)
 2. [웹 페이지는 어떻게 만들어지나요? — HTML · CSS · JS · DOM](#2-웹-페이지는-어떻게-만들어지나요--html--css--js--dom)
+   - 2-1. HTML — 뼈대
+   - 2-2. CSS — 스타일
+   - 2-3. JavaScript(JS) — 정적인 문서에 생명을 불어넣는 것
+   - 2-4. DOM — 브라우저가 만드는 완성본
 3. [LLM 기반 스크래핑 워크플로우 — 실습의 핵심](#3-llm-기반-스크래핑-워크플로우--실습의-핵심)
 4. [DevTools — 페이지 속 들여다보기](#4-devtools--페이지-속-들여다보기)
 5. [실전 사례 — Sephora 화장품 정보 수집](#5-실전-사례--sephora-화장품-정보-수집)
@@ -159,7 +163,39 @@ HTML 섹션에서 `class`가 불안정하다고 했는데, CSS를 알면 이해�
 
 ---
 
-### 2-3. DOM — 브라우저가 만드는 완성본
+### 2-3. JavaScript(JS) — 정적인 문서에 생명을 불어넣는 것
+
+HTML과 CSS만으로 만들어진 페이지는 철저하게 **정적**입니다. 버튼을 눌러도 반응이 없고, 스크롤해도 새 내용이 안 나오고, 로그인 상태도 기억하지 못합니다. 그냥 인쇄된 종이와 다를 바가 없습니다.
+
+**JavaScript(JS)** 는 이 정적인 문서에 **동작과 기능**을 부여하는 프로그래밍 언어입니다. 브라우저가 HTML·CSS를 화면에 그린 다음, JS 코드를 실행하면서 페이지가 비로소 "살아있는" 상태가 됩니다.
+
+> 💡 **비유로 이해하기**
+>
+> HTML이 건물의 **설계도**, CSS가 **인테리어 지침**이라면,
+> JS는 건물에 **출근한 직원**입니다.
+>
+> 설계도와 인테리어만 있으면 텅 빈 건물입니다. 직원이 출근해야 전화를 받고, 손님이 오면 안내하고, 문서를 처리합니다. 웹 페이지도 마찬가지입니다. JS가 실행되어야 버튼 클릭에 반응하고, 스크롤하면 새 내용을 불러오고, 서버에서 데이터를 가져와 화면에 채워넣습니다.
+
+#### 스크래핑 관점에서 JS가 중요한 이유
+
+JS가 하는 일 중 스크래핑에 직접 영향을 주는 것들이 있습니다.
+
+**가격·재고가 HTML에 없는 경우**  
+페이지가 열리면 JS가 서버에 별도로 요청을 보내서 가격 정보를 받아온 뒤 화면에 끼워넣습니다. 이 경우 HTML 파일 원문(`Ctrl+U`)에는 가격이 없고, JS가 실행된 후의 화면(`F12`)에만 가격이 보입니다.
+
+JS가 스크래핑에 영향을 주는 대표적인 상황:
+
+**상황 1: 가격이나 재고가 HTML에 없는 경우**
+페이지가 열리면 JS가 서버에 "이 상품 가격 알려줘"라고 요청(API 호출)하고, 응답을 받아서 DOM에 끼워넣습니다. HTML 파일을 받는 시점에는 가격이 없고, JS가 실행된 후에야 나타납니다.
+
+**상황 2: 무한 스크롤**
+인스타그램이나 쇼핑몰 목록처럼, 스크롤을 내릴 때마다 JS가 다음 상품 목록을 불러옵니다. 한 번에 전체를 받아오는 게 아니므로, 스크롤 동작을 시뮬레이션하지 않으면 첫 화면 데이터밖에 못 뽑습니다.
+
+**상황 3: "더보기" 버튼 뒤의 리뷰**
+리뷰가 처음 6개만 보이고 "더보기"를 눌러야 나머지가 로드되는 경우, 버튼 클릭까지 시뮬레이션해야 합니다.
+---
+
+### 2-4. DOM — 브라우저가 만드는 완성본
 
 **DOM(Document Object Model)** 은 브라우저가 HTML 파일을 읽은 뒤 **메모리 안에 재구성한 트리 구조**입니다.
 
@@ -184,30 +220,10 @@ HTML 파일과 DOM이 왜 다른 개념인지 헷갈릴 수 있는데, 레고로
 
 ---
 
-### 2-4. JS — 페이지를 살아있게 만드는 것
-
-**JS(JavaScript)** 는 HTML/CSS가 만든 정적인 페이지를 **동적으로 살아있게** 만드는 코드입니다.
-
-> 💡 **비유로 이해하기**
->
-> HTML이 건물의 **설계도**, CSS가 **인테리어 지침**이라면,
-> JS는 건물에 **실제로 출근한 직원**입니다. 버튼을 누르면 반응하고, 스크롤하면 콘텐츠를 더 불러오고, 로그인 상태를 기억하는 등 모든 "동작"을 JS가 담당합니다.
-
-JS가 스크래핑에 영향을 주는 대표적인 상황:
-
-**상황 1: 가격이나 재고가 HTML에 없는 경우**
-페이지가 열리면 JS가 서버에 "이 상품 가격 알려줘"라고 요청(API 호출)하고, 응답을 받아서 DOM에 끼워넣습니다. HTML 파일을 받는 시점에는 가격이 없고, JS가 실행된 후에야 나타납니다.
-
-**상황 2: 무한 스크롤**
-인스타그램이나 쇼핑몰 목록처럼, 스크롤을 내릴 때마다 JS가 다음 상품 목록을 불러옵니다. 한 번에 전체를 받아오는 게 아니므로, 스크롤 동작을 시뮬레이션하지 않으면 첫 화면 데이터밖에 못 뽑습니다.
-
-**상황 3: "더보기" 버튼 뒤의 리뷰**
-리뷰가 처음 6개만 보이고 "더보기"를 눌러야 나머지가 로드되는 경우, 버튼 클릭까지 시뮬레이션해야 합니다.
-
 > 💡 **이번 주 실습 범위**
 >
 > JS 때문에 생기는 복잡한 상황은 Playwright 같은 도구가 필요하고, 이건 심화 내용입니다.
-> 이번 주는 **HTML 파일 안에 데이터가 있는 정적 페이지** 또는 **API를 직접 호출하는 방식**에 집중합니다.
+> **HTML 파일 안에 데이터가 있는 정적 페이지** 또는 **API를 직접 호출하는 방식**에 우선 집중합니다.
 
 ---
 
@@ -812,3 +828,399 @@ URL 사이에 3초 대기 넣어줘.
 4. (선택) Streamlit UI 추가
 
 다음 주에 사이트, 코드, 결과 Excel 간단히 공유해 주세요.
+
+
+# Week 07 — Web Scraping 실전 사례
+## AI와 함께하는 Sephora 상품 스크래퍼 구현
+
+---
+
+## 이번 세션의 목표
+
+단순히 "코드를 짜달라"고 하는 것이 아니라,  
+**AI와 대화하며 사이트 구조를 직접 탐색하고, 안정적인 셀렉터를 찾고, 구현 순서를 설계하는 전체 흐름**을 경험한다.
+
+---
+
+## 실제 작업 흐름 (AI와의 대화 과정)
+
+이번 사례는 실제로 AI와 나눈 대화를 그대로 따라가며 구성했습니다.  
+각 단계에서 어떤 질문을 했고, AI가 무엇을 탐색했는지를 함께 보세요.
+
+---
+
+### Step 1. 사이트 구조 파악 — "셀렉터부터 찾아줘"
+
+**첫 번째 프롬프트:**
+이 사이트에서 sephora 사이트의 상품정보 구조를 파악해줘.
+Python으로 상품 scraper를 만들건데 selector를 다 찾아줄래?
+필요한건:
+
+브랜드명: Caudalie
+상품명: Vinoperfect Brightening Dark Spot Serum Vitamin C Alternative
+가격: $82.00
+상품 대표이미지 (1번 이미지)
+Ingredients 탭 클릭 후 전성분
+평점 및 리뷰 수 섹션
+리뷰 (pagination 포함, 기본 100개)
+
+> AI가 한 일: 브라우저로 상품 페이지를 직접 열고, JavaScript를 실행해 DOM 구조를 탐색.  
+> `data-at`, `data-comp`, `aria-*` 속성을 확인하고, 각 항목의 정확한 셀렉터를 추출.
+
+**도출된 셀렉터:**
+
+| 항목 | 셀렉터 | 속성 방식 |
+|------|--------|----------|
+| 브랜드명 | `[data-at="brand_name"]` | ✅ 안정 |
+| 상품명 | `[data-at="product_name"]` | ✅ 안정 |
+| 가격 | `p.css-1b4yla5 b` | ⚠️ 불안정 |
+| 대표 이미지 | `img[src*="main-zoom"]` | ✅ 안정 |
+| Ingredients 버튼 | `[data-at="ingredients"]` | ✅ 안정 |
+| 전성분 내용 | 버튼 다음 형제 div → "Aqua" 이후 텍스트 파싱 | ✅ 안정 |
+| 별점 | `[data-comp="StarRating "]` → `aria-label` 파싱 | ✅ 안정 |
+| 리뷰 수 | `[data-at="number_of_reviews"]` | ✅ 안정 |
+| R&R 섹션 제목 | `[data-at="ratings_reviews_section"]` | ✅ 안정 |
+| 개별 리뷰 | `[data-comp="Review Review BaseComponent "]` | ✅ 안정 |
+| 리뷰 작성일 | `[data-at="time_posted"]` | ✅ 안정 |
+| 리뷰 별점 | `[data-comp*="StarRating"]` → `aria-label` | ✅ 안정 |
+| 리뷰 제목 | `h3` (리뷰 내 첫 번째) | 🔶 준안정 |
+| 리뷰 본문 | `.css-1jyvzd8` | ⚠️ 불안정 |
+| 리뷰 피부타입 | "skin" 포함 `span` 텍스트 필터 | 🔶 준안정 |
+| 다음 페이지 | `[aria-label="Next page"]` | ✅ 안정 |
+| 현재 페이지 | `[aria-current="page"]` | ✅ 안정 |
+
+---
+
+### Step 2. 셀렉터 안정성 문제 제기 — "이거 임시 코드 아니야?"
+
+**두 번째 프롬프트:**
+p.css-1b4yla5 b
+이런건 매번 생성되는 임시코드 아니야?
+> 핵심 인사이트: `css-*` 클래스명은 Next.js / Emotion 등 CSS-in-JS가  
+> **빌드 타임에 자동 생성하는 해시값**이라 배포 때마다 바뀔 수 있다.
+
+**셀렉터 안정성 기준:**
+★★★ 절대 안정  → data-at, data-comp, aria-label, aria-current, role
+★★☆ 비교적 안정 → img[src*="main-zoom"], img[src*="main-hero"]
+★☆☆ 불안정      → css-xxxxxxx 클래스 (빌드마다 변경됨, 사용 금지)
+**가격처럼 `data-at`이 없는 경우 대안:**
+- `[data-comp="RegularProduct"] p b` (구조적 위치 기반)
+- XPath: `//b[contains(text(),'$')]`
+
+---
+
+### Step 3. JSON-LD 발견 — "소스 보면 JSON-LD 있지 않아?"
+
+**세 번째 프롬프트:**
+저번에 가격은 source view에서 JSON-LD로 확인했는데 이건 반영하기 어려워?
+
+> AI가 한 일: 페이지 소스의 `<script type="application/ld+json">` 태그 4개를 파싱.  
+> `@type: "ProductGroup"` 인 항목에서 놀라울 만큼 많은 정보가 담겨있음을 발견.
+
+**JSON-LD (`script[type="application/ld+json"]` 중 `@type == "ProductGroup"`):**
+
+```json
+{
+  "brand": { "name": "Caudalie" },
+  "name": "Vinoperfect Brightening Dark Spot Serum Vitamin C Alternative",
+  "productGroupID": "P94421",
+  "image": "https://www.sephora.com/productimages/sku/s2744423-main-hero.jpg",
+  "aggregateRating": {
+    "ratingValue": "4.257890873501346",
+    "reviewCount": "4087"
+  },
+  "hasVariant": [
+    {
+      "sku": "2744423",
+      "image": "https://www.sephora.com/productimages/sku/s2744423-main-hero.jpg",
+      "offers": {
+        "price": "82.0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "@id": "384527525",
+      "name": "Wow the glow!",
+      "description": "This serum has not only made my skin...",
+      "reviewRating": { "ratingValue": "5" },
+      "datePublished": "2026-04-14"
+    }
+    // ... 최대 10개
+  ]
+}
+```
+
+**JSON-LD vs DOM 비교:**
+
+| 항목 | JSON-LD | DOM |
+|------|---------|-----|
+| 브랜드, 상품명, 가격 | ✅ | ✅ |
+| 이미지 URL | ✅ | ✅ |
+| 평균 평점 (정밀값) | ✅ 4.2578… | ⚠️ 반올림값 |
+| 리뷰 총 개수 | ✅ 정확한 숫자 | ⚠️ "4.1K" 표기 |
+| 리뷰 본문 | ✅ 전문, 잘림 없음 | ⚠️ "Read more" 가능 |
+| 리뷰 개수 | ⚠️ 10개 고정 | ✅ pagination으로 전체 |
+| 전성분 | ❌ | ✅ (탭 클릭 후) |
+| 리뷰 피부타입 | ❌ | ✅ |
+
+---
+
+### Step 4. Headless 차단 여부 확인
+
+**네 번째 프롬프트:**
+headless 접근 허용되는지 확인도 가능해?
+
+> AI가 한 일: `robots.txt` 확인, 응답 헤더 분석, 봇 감지 스크립트 탐지.
+
+**분석 결과:**
+서버: istio-envoy (자체 Kubernetes 인프라, Cloudflare 없음)
+봇 감지 스택:
+
+Human Security (구 PerimeterX): UUID/UUID/p.js 패턴
+reCAPTCHA v3: 백그라운드 silent 스코어링 (팝업 없음)
+fp.min.js: 브라우저 핑거프린팅
+
+robots.txt:
+
+/product/ 경로: Disallow 없음 (접근 허용)
+Crawl-delay: 5 (요청 간 5초 간격 권고)
+**대응 전략:**
+- `playwright-stealth` 플러그인으로 `navigator.webdriver` 숨김
+- User-Agent를 실제 Chrome 최신 버전으로 설정
+- 요청 간 2~5초 랜덤 딜레이 + Crawl-delay 5초 준수
+
+**팝업 처리 (해외 IP 접속 시):**
+```python
+# 지역 경고 팝업이 뜨는 경우
+if page.query_selector('[role="dialog"]'):
+    page.click('[data-at="modal_close"]')
+```
+
+---
+
+### Step 5. 구현 순서 설계 — "순서가 어떻게 되어야 할까?"
+
+**다섯 번째 프롬프트:**
+GUI 만들고 scraper 세부사항 구현 순서가 맞을까?
+
+> 핵심 교훈: GUI를 먼저 만들면 안 된다.  
+> GUI는 scraper의 출력 형태를 알아야 연결할 수 있다.
+
+---
+
+## MVP 구현 프롬프트 순서
+
+### 📌 프롬프트 1 — 데이터 모델 정의
+scraper.py가 출력할 JSON 스키마를 먼저 정의해줘.
+Pydantic BaseModel로 작성하고 별도 파일(models.py)로 분리해.
+포함 필드:
+
+brand, product_name, product_id, sku_id
+price (float), currency, in_stock (bool)
+image_url, avg_rating (float), review_count (int)
+ingredients (str)
+reviews: List[Review]
+
+rating (float), date (str), title (str | None)
+body (str), skin_type (str | None)
+
+
+scraped_at (datetime), source_url (str)
+---
+
+### 📌 프롬프트 2 — scraper.py 인터페이스 (골격)
+scraper.py를 구현해줘.
+실제 스크래핑 로직은 아직 비워도 되고, CLI 인터페이스와 출력 형태만 완성해줘.
+조건:
+
+argparse로 URL을 positional argument로 받음
+성공 시 stdout에 JSON 출력 (models.py 스키마 준수)
+실패 시 stderr에 에러 메시지 출력, exit code 1 반환
+진행 상황 로그는 stderr 전용 (stdout은 JSON만)
+
+실행 형태:
+python scraper.py "https://www.sephora.com/product/..."
+> 왜 stdout/stderr를 분리하나?  
+> GUI(Streamlit)가 subprocess로 호출할 때 JSON과 로그를 구분해서 읽기 위해서.
+
+---
+
+### 📌 프롬프트 3 — scraper.py 실제 구현
+scraper.py에 실제 스크래핑 로직을 구현해줘.
+환경: Python + Playwright + playwright-stealth
+────── 수집 전략 ──────
+[1단계] requests로 HTML 파싱 → JSON-LD 추출
+대상: script[type="application/ld+json"] 중 @type == "ProductGroup"
+추출 항목:
+- brand       = data["brand"]["name"]
+- product_name = data["name"]
+- product_id  = data["productGroupID"]
+- image_url   = data["image"]
+- avg_rating  = data["aggregateRating"]["ratingValue"]
+- review_count = data["aggregateRating"]["reviewCount"]
+- SKU 매칭: URL의 skuId와 hasVariant[].sku 일치 항목에서 price 추출
+- reviews (1페이지, 최대 10개):
+id, title=name, body=description,
+rating=reviewRating.ratingValue, date=datePublished
+[2단계] Playwright → 전성분 + 리뷰 pagination
+봇 우회:
+- playwright-stealth 적용
+- User-Agent: 실제 Chrome 최신 버전
+- 요청 간 random.uniform(2, 5) 딜레이
+팝업 처리:
+- [role="dialog"] 감지 → [data-at="modal_close"] 클릭
+전성분 추출:
+- [data-at="ingredients"] 클릭 후 대기
+- 다음 형제 div 전체 innerText 가져오기
+- "Aqua" 시작 위치부터 슬라이싱
+- "The list of ingredients" 이전까지만 사용
+리뷰 수집 (2페이지~, max 100개):
+- 섹션 로드 대기: #ratings-reviews-container [data-comp*="Pagination"]
+- 리뷰 아이템: [data-comp="Review Review BaseComponent "]
+- 각 항목 추출:
+rating    → [data-comp*="StarRating"] aria-label 파싱
+date      → [data-at="time_posted"] innerText
+title     → h3 innerText (없으면 None)
+body      → h3 다음 형제 div (XPath):
+//div[@data-comp="Review Review BaseComponent "]
+//h3/following-sibling::div[1]
+skin_type → 리뷰 내 span 중 텍스트에 "skin" 포함된 것 (없으면 None)
+- 페이지 전환: [aria-label="Next page"] 클릭
+- 종료 조건: 버튼 disabled OR 수집량 >= max_reviews
+────── 셀렉터 원칙 ──────
+data-at, data-comp, aria-* 속성 우선 사용
+css-* 클래스명 단독 사용 금지 (동적 해시값, 빌드마다 변경됨)
+scraper.py에 실제 스크래핑 로직을 구현해줘.
+환경: Python + Playwright + playwright-stealth
+────── 수집 전략 ──────
+[1단계] requests로 HTML 파싱 → JSON-LD 추출
+대상: script[type="application/ld+json"] 중 @type == "ProductGroup"
+추출 항목:
+- brand       = data["brand"]["name"]
+- product_name = data["name"]
+- product_id  = data["productGroupID"]
+- image_url   = data["image"]
+- avg_rating  = data["aggregateRating"]["ratingValue"]
+- review_count = data["aggregateRating"]["reviewCount"]
+- SKU 매칭: URL의 skuId와 hasVariant[].sku 일치 항목에서 price 추출
+- reviews (1페이지, 최대 10개):
+id, title=name, body=description,
+rating=reviewRating.ratingValue, date=datePublished
+[2단계] Playwright → 전성분 + 리뷰 pagination
+봇 우회:
+- playwright-stealth 적용
+- User-Agent: 실제 Chrome 최신 버전
+- 요청 간 random.uniform(2, 5) 딜레이
+팝업 처리:
+- [role="dialog"] 감지 → [data-at="modal_close"] 클릭
+전성분 추출:
+- [data-at="ingredients"] 클릭 후 대기
+- 다음 형제 div 전체 innerText 가져오기
+- "Aqua" 시작 위치부터 슬라이싱
+- "The list of ingredients" 이전까지만 사용
+리뷰 수집 (2페이지~, max 100개):
+- 섹션 로드 대기: #ratings-reviews-container [data-comp*="Pagination"]
+- 리뷰 아이템: [data-comp="Review Review BaseComponent "]
+- 각 항목 추출:
+rating    → [data-comp*="StarRating"] aria-label 파싱
+date      → [data-at="time_posted"] innerText
+title     → h3 innerText (없으면 None)
+body      → h3 다음 형제 div (XPath):
+//div[@data-comp="Review Review BaseComponent "]
+//h3/following-sibling::div[1]
+skin_type → 리뷰 내 span 중 텍스트에 "skin" 포함된 것 (없으면 None)
+- 페이지 전환: [aria-label="Next page"] 클릭
+- 종료 조건: 버튼 disabled OR 수집량 >= max_reviews
+────── 셀렉터 원칙 ──────
+data-at, data-comp, aria-* 속성 우선 사용
+css-* 클래스명 단독 사용 금지 (동적 해시값, 빌드마다 변경됨)
+---
+
+### 📌 프롬프트 4 — 단독 테스트
+scraper.py 출력을 검증하는 test_scraper.py를 만들어줘.
+테스트 항목:
+
+필수 필드 누락 없는지 (Pydantic 검증)
+price가 숫자로 파싱되는지
+reviews 최소 1개 이상인지
+ingredients가 "Aqua"로 시작하는지
+리뷰 body가 빈 문자열이 아닌지
+
+실행:
+python test_scraper.py "https://www.sephora.com/product/..."
+
+---
+
+### 📌 프롬프트 5 — GUI 구현
+Streamlit으로 GUI를 만들어줘 (app.py).
+scraper.py를 subprocess로 호출하는 방식으로 구현.
+기능:
+
+URL 입력창 + 실행 버튼
+실행 중 spinner 표시
+stderr 로그 실시간 출력 (진행 상황)
+완료 후 결과를 구조화 표시:
+상품 기본정보: 이미지, 브랜드, 상품명, 가격, 평점, 리뷰수
+전성분: st.expander로 접을 수 있게
+리뷰: st.dataframe으로 표시 (rating, date, title, body, skin_type)
+에러 발생 시 stderr 내용을 st.error로 표시
+결과 JSON 다운로드 버튼
+
+subprocess 호출 방식:
+result = subprocess.run(
+["python", "scraper.py", url],
+capture_output=True,
+text=True,
+timeout=120
+)
+if result.returncode == 0:
+data = json.loads(result.stdout)
+else:
+st.error(result.stderr)
+
+---
+
+## 구현 순서 요약
+models.py        ← 데이터 구조 합의 (scraper + GUI 공통 기준)
+↓
+scraper.py 골격  ← CLI 인터페이스 + stdout/stderr 분리
+↓
+scraper.py 구현  ← JSON-LD → Playwright 순서로 로직 채우기
+↓
+test_scraper.py  ← 실제 URL로 출력 검증
+↓
+app.py           ← GUI는 마지막에 (scraper 출력을 알고 나서)
+
+파일 구조:
+sephora-scraper/
+├── models.py       # Pydantic 데이터 모델
+├── scraper.py      # CLI 스크래퍼 (핵심)
+├── test_scraper.py # 검증 스크립트
+├── app.py          # Streamlit GUI
+└── requirements.txt
+
+---
+
+## 이 세션의 핵심 교훈
+
+**1. 셀렉터는 안정성 기준으로 선택한다**  
+`css-*` 클래스는 빌드마다 바뀐다. `data-at`, `data-comp`, `aria-*` 속성이 훨씬 안정적이다.
+
+**2. 소스를 먼저 보면 더 좋은 방법이 보인다**  
+DOM을 긁기 전에 `<script type="application/ld+json">`을 확인하는 습관.  
+가격, 평점, 리뷰 본문을 JavaScript 없이 안정적으로 가져올 수 있다.
+
+**3. 봇 감지를 이해하고 접근한다**  
+`robots.txt` → 응답 헤더 → 스크립트 패턴 순으로 확인.  
+허용된 범위에서, 적절한 딜레이와 함께, stealth 설정으로 접근한다.
+
+**4. GUI는 항상 마지막이다**  
+데이터 구조(models.py) → 핵심 로직(scraper.py) → 검증 → GUI 순서.  
+출력 형태를 모르는 상태에서 GUI를 먼저 만들면 나중에 전부 다시 짜야 한다.
+
+**5. AI와의 대화는 탐색 과정이다**  
+"셀렉터 찾아줘" → "이거 불안정하지 않아?" → "더 좋은 방법 없어?" → "차단 여부 확인해줘"  
+한 번에 완벽한 프롬프트를 쓰는 것이 아니라, 대화를 통해 점점 정밀하게 좁혀간다.

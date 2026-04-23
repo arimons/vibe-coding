@@ -1,0 +1,63 @@
+// ============================================
+// Syncthing 공유 ignore 규칙
+// 이 파일은 동기화됨 → 모든 기기에 자동 배포
+// 각 기기 .stignore에서 #include .syncignore 로 참조
+// ============================================
+
+// Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+*.egg-info/
+dist/
+build/
+
+// Node
+node_modules/
+.npm/
+.next/
+.nuxt/
+
+// 환경변수 (보안)
+.env
+.env.local
+.env.*.local
+
+// Git
+.git/
+
+// IDE / 에디터
+.vscode/
+.idea/
+*.suo
+*.user
+
+// macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+
+// Windows
+Thumbs.db
+Thumbs.db:encryptionKey
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+// 임시파일
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
