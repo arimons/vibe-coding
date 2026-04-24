@@ -50,3 +50,7 @@ antigravity-config/.claude/
 __pycache__/
 *.pyc
 
+# Scraper Data & Profiles
+tutorials/week07-scraper/playwright_profile/
+tutorials/week07-scraper/saved_scrapes/
+

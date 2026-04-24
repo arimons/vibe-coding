@@ -21,43 +21,64 @@ def close_popup(page, selector, label="popup"):
 def scrape_sephora_product(url, target_review_count=20):
     sku_id = url.split("skuId=")[-1].split("&")[0] if "skuId=" in url else ""
 
+    user_data_dir = os.path.join(os.getcwd(), "playwright_profile")
+    if not os.path.exists(user_data_dir):
+        os.makedirs(user_data_dir)
+
     with sync_playwright() as p:
         try:
-            browser = p.chromium.launch(
-                headless=False, channel="chrome",
-                args=["--disable-blink-features=AutomationControlled", "--disable-web-security"]
+            # launch_persistent_context는 browser와 context를 한 번에 생성합니다.
+            context = p.chromium.launch_persistent_context(
+                user_data_dir=user_data_dir,
+                headless=False, 
+                channel="chrome",
+                args=["--disable-blink-features=AutomationControlled"],
+                ignore_default_args=["--enable-automation"],
+                viewport={"width": 1280, "height": 800},
             )
         except Exception:
-            browser = p.chromium.launch(
+            context = p.chromium.launch_persistent_context(
+                user_data_dir=user_data_dir,
                 headless=False,
-                args=["--disable-blink-features=AutomationControlled", "--disable-web-security"]
+                args=["--disable-blink-features=AutomationControlled"],
+                ignore_default_args=["--enable-automation"],
+                viewport={"width": 1280, "height": 800},
             )
 
-        context = browser.new_context(
-            locale="en-US",
-            timezone_id="America/New_York",
-            viewport={"width": 1280, "height": 800},
-            geolocation={"longitude": -122.4194, "latitude": 37.7749},
-        )
-        context.grant_permissions(["geolocation", "notifications"])
         page = context.new_page()
         stealth_sync(page)
 
-        print(f"Navigating to {url}")
+        # ── Step 0: Warm up (Homepage visit for cookies) ──────────────────
+        print("Warm up: Visiting homepage for session cookies...")
         try:
-            page.goto(url, wait_until="domcontentloaded")
+            page.goto("https://www.sephora.com", wait_until="domcontentloaded", timeout=60000)
             time.sleep(3)
+            page.evaluate("window.scrollTo(0, 300)")
+            time.sleep(1)
         except Exception as e:
-            print(f"Navigation error: {e}")
+            print(f"  Warm up error (ignored): {e}")
 
-        # ── Step 1: Dismiss popups sequentially ───────────────────────────
+        # ── Step 0.1: Navigate to target product ─────────────────────────
+        print(f"Navigating to product page: {url}")
+        try:
+            page.goto(url, wait_until="domcontentloaded", timeout=60000)
+            time.sleep(4)
+        except Exception as e:
+            print(f"  Navigation error: {e}")
+
+        # ── Step 1: Dismiss popups (Explicit Wait) ───────────────────────
         print("Handling popups...")
-        time.sleep(1.5)
-        loc_closed = close_popup(page, '[data-at="modal_close"]', "location popup")
-        if loc_closed:
-            time.sleep(2)
-        close_popup(page, '[data-at="close_button"]', "sign-in popup")
-        time.sleep(1)
+        def wait_and_close(p, selector, label):
+            try:
+                p.wait_for_selector(selector, state="visible", timeout=5000)
+                p.locator(selector).first.click()
+                print(f"  ✓ Closed {label}")
+                time.sleep(1)
+            except:
+                pass
+
+        wait_and_close(page, '[data-at="modal_close"]', "location popup")
+        wait_and_close(page, '[data-at="close_button"]', "sign-in popup")
 
         # ── Step 2: Product info from DOM ─────────────────────────────────
         print("Extracting product info from DOM...")
@@ -288,7 +309,7 @@ def scrape_sephora_product(url, target_review_count=20):
                 break
             time.sleep(1.5)
 
-        browser.close()
+        context.close()
 
         result = {
             "url":               clean_url,

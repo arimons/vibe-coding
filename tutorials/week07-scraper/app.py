@@ -3,12 +3,17 @@ import importlib
 if 'scraper' in sys.modules:
     importlib.reload(sys.modules['scraper'])
 
+import asyncio
+if sys.platform == 'win32':
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+
 import os
 import glob
 import json
 import streamlit as st
 import pandas as pd
-from scraper import scrape_sephora_product
+from scraper import scrape_sephora_product as scrape_playwright
+from selenium_scraper import scrape_sephora_product as scrape_selenium
 
 st.set_page_config(page_title="Sephora Premium Scraper", layout="wide")
 
@@ -98,17 +103,22 @@ def render_result(data):
 
 def main():
     st.sidebar.title("Sephora Scraper")
+    engine = st.sidebar.selectbox("Scraping Engine", ["Playwright", "Selenium (Undetected)"])
     mode = st.sidebar.radio("Navigation", ["New Scrape", "View Saved Results"])
     
     if mode == "New Scrape":
-        url = st.text_input("Enter Sephora Product URL:", "https://www.sephora.com/product/stem-clinical-recovery-serum-P521628?skuId=2966935")
+        url = st.text_input("Enter Sephora Product URL:", "")
         review_count = st.slider("Target Number of Reviews", min_value=1, max_value=200, value=20, step=1)
         
         if st.button("Start Extraction"):
             if url:
-                with st.spinner("Extracting data via DOM evaluation..."):
+                with st.spinner(f"Extracting data via {engine}..."):
                     try:
-                        result = scrape_sephora_product(url, target_review_count=review_count)
+                        if engine == "Playwright":
+                            result = scrape_playwright(url, target_review_count=review_count)
+                        else:
+                            result = scrape_selenium(url, target_review_count=review_count)
+                            
                         st.success(f"Extraction successful! {len(result['images'])} images · {len(result['reviews'])} reviews")
                         if result.get('_reviews_file'):
                             st.caption(f"📄 Reviews saved → `{result['_reviews_file']}`")

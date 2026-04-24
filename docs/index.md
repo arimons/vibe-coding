@@ -22,20 +22,9 @@ nav_order: 1
 
 ### 📖 기초 가이드
 
-### 🔧 환경 설정
-
-| 자료 | 설명 |
-|------|------|
-| [Antigravity 세팅 가이드](antigravity-setup) | Rules · Skills · MCP 설치 (수업 전 필수) |
-
-> Git · Python · Node.js · Antigravity 설치 가이드는 별도 제공 예정
-
-### 📖 기초 가이드
-
 | 자료 | 설명 |
 |------|------|
 | [용어 사전](glossary) | 프론트엔드/백엔드/API 등 필수 개념 정리 |
-| [Git 가이드](git-guide) | 버전 관리 기초 + 문제 상황 해결 |
 | [Git 가이드](git-guide) | 버전 관리 기초 + 문제 상황 해결 |
 | [CLI 기초 가이드](cli-guide) | 터미널 명령어 기초 |
 | [Markdown 기초 가이드](markdown-guide) | 문서 작성 기초 |
@@ -54,20 +43,13 @@ nav_order: 1
 | [Week 4 실습](week04-pandas) | 데이터 변환·분석 (pandas + 시각화) |
 | [Week 5 실습](week05-llm-pipeline) | LLM 문서 처리 파이프라인 |
 | [Week 6 실습](week06-structured-output) | Structured Output + 데이터 구조화 |
-| [Streamlit 가이드](streamlit) | Streamlit 레퍼런스 |
-| [Antigravity 가이드](antigravity-guide) | Antigravity 사용 가이드 |
-| [Antigravity 심화](antigravity-advanced) | Rules · Skills 심화 설정 |
+| [Week 7 실습](week07_web_scraping) | 웹 스크래핑 + LLM 코드 자동 생성 |
 
-### 🗂️ 주차별 실습 자료
+### 🚀 개인 프로젝트 (Week 9~12)
 
 | 자료 | 설명 |
 |------|------|
-| [Week 2 실습](week02-practice) | CLI 기초 실습 파일 |
-| [Week 3 실습](week03-gui) | Streamlit GUI 실습 |
-| [Week 03.5 터미널 실습](week03.5) | 터미널 기초 보충 세션 |
-| [Week 4 실습](week04-pandas) | 데이터 변환·분석 (pandas + 시각화) |
-| [Week 5 실습](week05-llm-pipeline) | LLM 문서 처리 파이프라인 |
-| [Week 6 실습](week06-structured-output) | Structured Output + 데이터 구조화 |
+| [Week 9 사양설계서](week09-project-spec) | 프로젝트 시작 전 문제 정의 + 입출력 설계 템플릿 |
 
 ---
 
@@ -78,12 +60,10 @@ nav_order: 1
 
 ### **기간**
 12주 (주 1회, 90분)
-12주 (주 1회, 90분)
 
 ### **구조**
 - 1주: 쇼케이스 (AI 도구로 무엇이 가능한지 체험)
 - 2주: 개발 환경 + CLI 기초
-- 3-7주: 데이터 실습 (Streamlit / Excel / LLM API / 웹 스크래핑)
 - 3-7주: 데이터 실습 (Streamlit / Excel / LLM API / 웹 스크래핑)
 - 8주: 프로젝트 기획 + 기술스택 이해
 - 9-12주: 개인 프로젝트 개발
@@ -213,13 +193,6 @@ nav_order: 1
 > 두 가지 앱으로 실습합니다.
 > **Part 1** — 측정 소프트웨어 양식 → R/SPSS 입력 양식 변환기 (`app.py`)
 > **Part 2** — 장비 Raw Data → 취합 → 통계 → 시각화 분석 파이프라인 (`app_analysis.py`)
-### **Week 4: 데이터 변환·분석 — pandas + Streamlit**
-
-📖 참고 자료: [Week 4 실습](week04-pandas)
-
-> 두 가지 앱으로 실습합니다.
-> **Part 1** — 측정 소프트웨어 양식 → R/SPSS 입력 양식 변환기 (`app.py`)
-> **Part 2** — 장비 Raw Data → 취합 → 통계 → 시각화 분석 파이프라인 (`app_analysis.py`)
 
 #### 주제
 - pandas 핵심 기능 체험 (읽기 / 정제 / 변환 / 집계 / 포맷 변환)
@@ -227,33 +200,11 @@ nav_order: 1
 - 멀티시트 Excel 취합 → Tidy Data 변환
 - Z-score 표준화 + Violin Plot 시각화
 - Streamlit GUI로 변환·분석 규칙을 직접 조작하면서 결과 확인
-- pandas 핵심 기능 체험 (읽기 / 정제 / 변환 / 집계 / 포맷 변환)
-- 정규식(regex)으로 피험자 정보 분리
-- 멀티시트 Excel 취합 → Tidy Data 변환
-- Z-score 표준화 + Violin Plot 시각화
-- Streamlit GUI로 변환·분석 규칙을 직접 조작하면서 결과 확인
 
 #### 시연 (20분)
 1. sample_raw.csv 열어서 문제점 파악 → app.py로 변환 시연
 2. 장비 Raw Data(cholesterol, fatty acid) → app_analysis.py로 취합·시각화 시연
-#### 시연 (20분)
-1. sample_raw.csv 열어서 문제점 파악 → app.py로 변환 시연
-2. 장비 Raw Data(cholesterol, fatty acid) → app_analysis.py로 취합·시각화 시연
 
-#### 실습 (60분)
-- **Part 1 — 변환기** (`streamlit run app.py`)
-  - Phase 1: 파일 업로드 → 구조 파악 (열 타입, 결측값 확인)
-  - Phase 2: 열 이름 변경 + 순서 재배치
-  - Phase 3: 정규식으로 단위 제거, 피험자 정보 분리
-  - Phase 4: 코딩 변환 매핑 (텍스트 → 숫자)
-  - Phase 5: Wide → Long 포맷 변환
-  - Phase 6: CSV / Excel 다운로드
-- **Part 2 — 분석 파이프라인** (`streamlit run app_analysis.py`)
-  - Step 1: Raw Data 로드 + 여러 파일 합치기
-  - Step 2: skiprows 설정, 정규식 분리, 멀티시트 취합
-  - Step 3: Z-score 계산 + 이상치 확인
-  - Step 4: Violin Plot / Box Plot / Paired Plot 시각화
-  - Step 5: 멀티시트 Excel 저장
 #### 실습 (60분)
 - **Part 1 — 변환기** (`streamlit run app.py`)
   - Phase 1: 파일 업로드 → 구조 파악 (열 타입, 결측값 확인)
@@ -310,36 +261,6 @@ nav_order: 1
 
 ---
 
-#### Example 5-B — 사내 임상 보고서 PDF → 데이터 추출 → Excel 기입
-
-📖 참고 자료: [Week 5-B 실습](week05b-pdf-extraction)
-
-> Example 5와 다른 점: 민감 정보라 LLM에 전체 전송 불가. 텍스트 추출 우선, 스캔본 영역만 부분 OCR.
-
-##### 주제
-- 민감 정보 판단 기준: 어디까지 AI에 보내도 되는가
-- PDF 전체 텍스트 덤프 → 구조 파악 → 추출 규칙 설계 순서
-- 피험자 단위 반복 구조 인식 + 페이지 패턴 자동화
-- 텍스트 레이어 페이지: pdfplumber로 로컬 추출
-- 스캔본 페이지: 필요 영역만 crop → Gemini OCR
-- 추출 결과 → CRF Excel 템플릿 셀 지정 기입
-
-##### 시연 (40분)
-1. PDF 전체 텍스트 덤프 → 구조 파악 과정 시연 — 10분
-2. 피험자 반복 구조 설명 → AI로 추출 코드 생성 시연 — 10분
-3. 스캔본 페이지 crop → 부분 OCR 시연 — 10분
-4. 추출값 → CRF Excel 템플릿에 자동 기입 시연 — 10분
-
-##### 실습 (30분)
-- 샘플 임상 보고서 PDF로 전체 텍스트 덤프 실행
-- 피험자 1명분 추출 → Excel 템플릿 기입 확인
-- 전체 피험자 자동화 실행
-
-##### 과제
-실제 업무에서 반복 입력하는 보고서 1종 선정 → 추출 구조 설계해보기
-
----
-
 ### **Week 6: Structured Output — 문서에서 데이터 뽑기**
 
 📖 참고 자료: [Week 6 실습](week06-structured-output)
@@ -372,8 +293,7 @@ nav_order: 1
 
 ### **Week 7: 웹 스크래핑 — LLM으로 코드 자동 생성**
 
-> 이번 주 목표: LLM에게 "양식을 채워달라"고 시키는 법을 익힌다.
-> 정규식이나 파싱 코드 없이, 원하는 구조의 데이터를 바로 얻어내는 경험.
+📖 참고 자료: [Week 7 실습](week07_web_scraping)
 
 > 이번 주 목표: HTML selector를 몰라도 된다. URL만 주면 LLM이 스크래핑 코드를 짜준다.
 
@@ -401,7 +321,6 @@ nav_order: 1
 
 #### 과제
 정기적으로 확인하는 사이트 1개 스크래퍼 + Streamlit 연결 완성
-정기적으로 확인하는 사이트 1개 스크래퍼 + Streamlit 연결 완성
 
 ---
 
@@ -418,9 +337,7 @@ nav_order: 1
 예시 프로젝트 기획 전 과정 시연 + Streamlit vs Frontend 비교
 
 #### 실습 (60분)
-#### 실습 (60분)
 - 본인 프로젝트 구체화 + 1:1 피드백
-- 기술스택 선택 근거 작성
 - 기술스택 선택 근거 작성
 
 #### 과제
@@ -428,14 +345,18 @@ nav_order: 1
 
 ---
 
-### **Week 9-12: 개인 프로젝트**
+### **Week 9~12: 개인 프로젝트**
 
-| 주차 | 내용 |
-|------|------|
-| Week 9 | 핵심 기능 구현 + 1:1 멘토링 |
-| Week 10 | 기능 완성 + 중간 데모 |
-| Week 11 | 테스트 및 마무리 + README 작성 |
-| Week 12 | 최종 발표 (문제 → 해결 → 시연 → 배운 점) |
+📖 참고 자료: [Week 9 사양설계서](week09-project-spec)
+
+> 이번 주 목표: PDF / Excel / 웹 스크래핑 중 1개 이상을 활용한 실무 자동화 도구를 완성한다.
+
+| 주차 | 핵심 활동 | 산출물 |
+|------|-----------|--------|
+| Week 9 | 사양설계서 작성 + 실습 데이터 준비 + 강사 피드백 | 완성된 사양설계서 |
+| Week 10 | MVP 구현 (핵심 기능 1개 작동) | 실행 가능한 MVP |
+| Week 11 | 기능 고도화 + 엣지케이스 처리 + 동료 리뷰 | 완성본 |
+| Week 12 | 최종 발표 (문제 → 해결 → 시연 → 회고) | 발표 자료 + GitHub |
 
 ---
 
@@ -451,18 +372,7 @@ nav_order: 1
 | Week 6 | 50분 | 30분 | 개념 설명 ↔ 시연 교차 |
 | Week 7 | 60분 | 30분 | LLM 코드 생성 데모 위주 |
 | Week 8 | 20분 | 60분 | 1:1 피드백 중심 |
-| Week 9-12 | — | 80분 | 멘토링 + 공유 10분 |
-| 구간 | 시연 | 실습 | 비고 |
-|------|------|------|------|
-| Week 1 | 60분 | 20분 | 쇼케이스 중심 |
-| Week 2 | 30분 | 50분 | 실습 드릴 중심 |
-| Week 3 | 20분 | 60분 | 앱 제작 경험 중심 |
-| Week 4 | 20분 | 60분 | pandas 실습 |
-| Week 5 | 60분 | 30분 | 강사 데모 위주, 사전 설치 필수 |
-| Week 6 | 50분 | 30분 | 개념 설명 ↔ 시연 교차 |
-| Week 7 | 60분 | 30분 | LLM 코드 생성 데모 위주 |
-| Week 8 | 20분 | 60분 | 1:1 피드백 중심 |
-| Week 9-12 | — | 80분 | 멘토링 + 공유 10분 |
+| Week 9~12 | — | 80분 | 멘토링 + 공유 10분 |
 
 ---
 
@@ -478,7 +388,7 @@ nav_order: 1
 | Week 6 | Structured Output으로 문서 → 데이터 구조화 |
 | Week 7 | LLM 기반 웹 스크래핑 코드 자동 생성 |
 | Week 8 | 프로젝트 기획 능력, 기술스택 선택 판단 |
-| Week 9-12 | 실제 사용 가능한 도구 완성, 독립적 문제 해결 |
+| Week 9~12 | 실제 사용 가능한 도구 완성, 독립적 문제 해결 |
 
 ---
 
